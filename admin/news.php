@@ -4,170 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/adminnews.css?v=2">
+    <link rel="stylesheet" href="/Municipality/css/admin_news.css?v=2">
 </head>
-<body>
-<div class="main-container">
-    
-    <div class="header">
-        <h2>News</h2>
-    </div>
+<body><div class="news_dashboard_page_con">
+  <div class="news_dashboard_page">
+    <h1>News</h1>
 
-    <div class="add-news-box">
-        <h3>Add News Article</h3>
-        <form action="#" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label>News Title</label>
-                <input type="text" placeholder="Enter news title" required>
-            </div>
-
-            <div class="form-group">
-                <label>News Description</label>
-                <textarea placeholder="Write the news details..." required></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>Upload Image</label>
-                <input type="file" accept="image/*">
-            </div>
-
-            <button class="btn-submit">Publish News</button>
-        </form>
-    </div>
-
-    <h3 class="section-title">Existing News</h3>
-
-    <table class="news-table">
-        <thead>
+    <div class="news_table_con">
+      <div class="news_table_wrapper">
+        <table class="news_table">
+          <thead>
             <tr>
-                <th>#</th>
-                <th>News Title</th>
-                <th>Date</th>
-                <th>Image</th>
-                <th>Action</th>
+              <th>Title</th>
+              <th>Date</th>
+              <th>Visibility</th>
+              <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
+            <!-- Example News Row -->
             <tr>
-                <td>1</td>
-                <td>New Road Construction</td>
-                <td>2025-10-28</td>
-                <td><img src="https://via.placeholder.com/60"></td>
-                <td>
-                    <button class="edit-btn">Edit</button>
-                    <button class="delete-btn">Delete</button>
-                </td>
+              <td style="color: black;">Example Title ...</td>
+              <td>01/01/2025</td>
+              <td>
+                <button>Public</button>
+              </td>
+              <td>
+                <div>
+                  <p class="news_td_div_p">View</p>
+                  <p>|</p>
+                  <p class="news_td_delete_div_p">Delete</p>
+                </div>
+              </td>
             </tr>
-        </tbody>
-    </table>
+            <!-- More rows dynamically generated -->
+          </tbody>
+        </table>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="AddNews_Con">
+    <div class="AddNews">
+      <h1>Add News</h1>
+      <input type="text" placeholder="Title" required maxlength="150" />
+      <textarea placeholder="Description" required maxlength="1000"></textarea>
+
+      <div class="visibility_con">
+        <p>Visibility</p>
+        <div class="form_control">
+          <select required>
+            <option value="0">Private</option>
+            <option value="1">Public</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="news_dashboard_uploadPhoto_con">
+     <div class="news_upload_image" role="button" tabindex="0">
+
+
+  <h3>Upload Image</h3>
+  <p>Drag & drop an image here or click to select</p>
+  <label for="file">Upload</label>
+  <input type="file" accept="image/*" hidden id="file" />
 </div>
-<style>body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #fff;
-}
 
-.main-container {
-    padding: 30px 60px;
-}
+      </div>
 
-.header h2 {
-    font-size: 32px;
-    font-weight: 700;
-    color: #101011ff;
-}
+      <button class="publish_news">Publish</button>
+    </div>
+  </div>
 
-.add-news-box {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #dce7ff;
-    border-radius: 10px;
-}
 
-.add-news-box h3 {
-    margin-bottom: 15px;
-    color: #0b0b0cff;
-    font-size: 22px;
-    font-weight: 600;
-}
+</div>
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-}
-
-input[type="text"],
-textarea,
-input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #cbd7f3;
-    outline: none;
-}
-
-textarea {
-    height: 120px;
-}
-
-.btn-submit {
-    background: #1976ff;
-    color: #fff;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.section-title {
-    margin-top: 35px;
-    font-size: 22px;
-    font-weight: 600;
-}
-
-.news-table {
-    width: 100%;
-    margin-top: 15px;
-    border-collapse: collapse;
-}
-
-.news-table th, .news-table td {
-    border: 1px solid #dce7ff;
-    text-align: left;
-    padding: 12px;
-}
-
-.news-table img {
-    width: 60px;
-    height: 60px;
-    border-radius: 6px;
-    object-fit: cover;
-}
-
-.edit-btn, .delete-btn {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.edit-btn {
-    background: #007bff;
-    color: white;
-}
-
-.delete-btn {
-    background: #ff4d4d;
-    color: white;
-}
-</style>
-
-</h1>
 </body>
 </html>
