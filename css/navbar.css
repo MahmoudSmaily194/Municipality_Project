@@ -1,0 +1,110 @@
+.navbar_con {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+  background-color: white;
+}
+.logo_con{
+  width: 40%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight:500;
+  font-size: 0.7rem;
+}
+.navbar_con img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-inline-start: 2rem;
+}
+.navbar_con .navbar {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-inline-end: 2rem;
+}
+.navbar_con .navbar a {
+  text-decoration: none;
+  color: #0d141c;
+  font-weight: 500;
+}
+.langBtn {
+  background-color: #1a80e5;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.side_navbar_con {
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-bottom-right-radius: 20px;
+  width: calc(15rem + 3vw);
+}
+.side_navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.side_navbar div {
+  width: 90%;
+}
+.side_navbar a {
+  text-decoration: none;
+  font-weight: 400;
+  color: black;
+}
+.side_navbar div {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  height: 3.5rem;
+  border-radius: 10px;
+}
+.side_navbar .active{
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.side_navbar div img {
+  width: 25px;
+  height: 25px;
+  margin-inline-start: 1rem;
+}
+.menuIcon {
+  display: none;
+}
+@media (max-width: 767px) {
+  .menuIcon {
+    display: block;
+    cursor: pointer;
+  }
+  .menuIcon {
+    margin-inline-end: 1rem;
+  }
+  .logo_con{
+  width: 80%;
+ 
+}
+}
+#close {
+  display: none;
+}
+#open {
+  display: flex;
+}

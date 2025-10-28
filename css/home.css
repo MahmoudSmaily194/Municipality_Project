@@ -1,0 +1,205 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+button {
+  cursor: pointer;
+}
+.home {
+  background-image: linear-gradient(to right, #0000001a 10%, #00000066 40%),
+    url("/Municipality/images/Home.png");
+
+  height: 100vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.home_header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  margin-top: 4rem;
+}
+.home_header h1 {
+  font-weight: 700;
+  font-size: calc(2rem + 3vw);
+  text-align: center;
+}
+.home_header p {
+  text-align: center;
+  font-size: 1.4rem;
+}
+.home_header button {
+  width: calc(13rem + 1vw);
+  height: 4rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #1a80e5;
+  font-family: "sans";
+  color: white;
+  font-weight: 700;
+  font-size: larger;
+}
+.explore_town_sec {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+.explore_town_sec h1 {
+  margin: 1rem;
+  font-size: calc(1.5rem + 2vw);
+}
+.carousel_container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 320px;
+}
+.image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2rem;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  z-index: 0;
+}
+.dots {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+}
+.dot {
+  width: calc(8px + 0.5vw);
+  height: calc(8px + 0.5vw);
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+.carousel_arrow_btn {
+  background-color: transparent;
+  border: none;
+  font-weight: 800;
+  color: #474747;
+  font-size: calc(1.5rem + 0.3vw);
+}
+.leftImage {
+  left: 40%;
+  z-index: 2;
+  opacity: 0.8;
+  transform: scale(0.9);
+}
+.farLeftImage {
+  left: 0;
+  z-index: 1;
+  opacity: 0.8;
+  transform: scale(0.7);
+}
+.rightImage {
+  right: 40%;
+  left: auto;
+  z-index: 2;
+  opacity: 0.8;
+  transform: scale(0.9);
+}
+.farRightImage {
+  right: 0;
+  left: auto;
+  z-index: 1;
+  opacity: 0.8;
+  transform: scale(0.7);
+}
+.active {
+  left: 25%;
+  width: 50%;
+  z-index: 3;
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+.active-dot {
+  background-color: #1a80e5;
+}
+@media (max-width: 676px) {
+  .carousel_container {
+    width: 100%;
+  }
+  .quick_access_con_title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .quick_access_con_title h1 {
+    margin-left: 0rem !important;
+    font-size: 2rem !important;
+  }
+  .quick_access {
+    width: 100% !important;
+  }
+  .quick_access div {
+    width: 9rem;
+  }
+  .quick_access img {
+    width: 9rem !important;
+    height: 9rem !important;
+  }
+  .quick_access div p {
+    font-size: 1rem;
+  }
+}
+.quick_access_con {
+  margin: 5rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+.quick_access_con_title {
+  width: 80%;
+}
+.quick_access_con_title h1 {
+  margin-left: 3rem;
+  font-size: 2.5rem;
+}
+.quick_access {
+  flex-wrap: wrap;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+.quick_access div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.quick_access p {
+  font-size: 1rem;
+  font-weight: 500;
+}

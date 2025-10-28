@@ -1,0 +1,10 @@
+.admin {
+  width: 100%;
+  display: flex;
+}
+.admin_side {
+  width: 23%;
+}
+.admin_page {
+  width: 75%;
+}
