@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/adminnews.css?v=2">
+<meta charset="UTF-8">
+<title>Event Management</title>
+<link rel="stylesheet" href="events.css">
 </head>
 <body>
+
 <div class="main-container">
     
     <div class="header">
-        <h2>News</h2>
+        <h2>Events</h2>
     </div>
 
-    <div class="add-news-box">
-        <h3>Add News Article</h3>
+    <div class="add-event-box">
+        <h3>Add New Event</h3>
         <form action="#" method="POST" enctype="multipart/form-data">
+
             <div class="form-group">
-                <label>News Title</label>
-                <input type="text" placeholder="Enter news title" required>
+                <label>Event Title</label>
+                <input type="text" placeholder="Enter event title" required>
             </div>
 
             <div class="form-group">
-                <label>News Description</label>
-                <textarea placeholder="Write the news details..." required></textarea>
+                <label>Event Date</label>
+                <input type="date" required>
+            </div>
+
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" placeholder="Enter event location" required>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea placeholder="Enter event details..." required></textarea>
             </div>
 
             <div class="form-group">
@@ -31,18 +42,19 @@
                 <input type="file" accept="image/*">
             </div>
 
-            <button class="btn-submit">Publish News</button>
+            <button class="btn-submit">Add Event</button>
         </form>
     </div>
 
-    <h3 class="section-title">Existing News</h3>
+    <h3 class="section-title">Upcoming & Past Events</h3>
 
-    <table class="news-table">
+    <table class="event-table">
         <thead>
             <tr>
                 <th>#</th>
-                <th>News Title</th>
+                <th>Event Title</th>
                 <th>Date</th>
+                <th>Location</th>
                 <th>Image</th>
                 <th>Action</th>
             </tr>
@@ -50,8 +62,9 @@
         <tbody>
             <tr>
                 <td>1</td>
-                <td>New Road Construction</td>
-                <td>2025-10-28</td>
+                <td>Community Clean-Up</td>
+                <td>2025-10-30</td>
+                <td>Main Street Park</td>
                 <td><img src="https://via.placeholder.com/60"></td>
                 <td>
                     <button class="edit-btn">Edit</button>
@@ -60,6 +73,7 @@
             </tr>
         </tbody>
     </table>
+
 </div>
 <style>body {
     margin: 0;
@@ -74,19 +88,19 @@
 .header h2 {
     font-size: 32px;
     font-weight: 700;
-    color: #101011ff;
+    color: #1976ff;
 }
 
-.add-news-box {
+.add-event-box {
     margin-top: 20px;
     padding: 20px;
     border: 1px solid #dce7ff;
     border-radius: 10px;
 }
 
-.add-news-box h3 {
+.add-event-box h3 {
     margin-bottom: 15px;
-    color: #0b0b0cff;
+    color: #1976ff;
     font-size: 22px;
     font-weight: 600;
 }
@@ -102,6 +116,7 @@
 }
 
 input[type="text"],
+input[type="date"],
 textarea,
 input[type="file"] {
     width: 100%;
@@ -131,19 +146,19 @@ textarea {
     font-weight: 600;
 }
 
-.news-table {
+.event-table {
     width: 100%;
     margin-top: 15px;
     border-collapse: collapse;
 }
 
-.news-table th, .news-table td {
+.event-table th, .event-table td {
     border: 1px solid #dce7ff;
     text-align: left;
     padding: 12px;
 }
 
-.news-table img {
+.event-table img {
     width: 60px;
     height: 60px;
     border-radius: 6px;
@@ -168,6 +183,5 @@ textarea {
 }
 </style>
 
-</h1>
 </body>
 </html>
