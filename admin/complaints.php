@@ -1,123 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Complaints Management</title>
-<link rel="stylesheet" href="complaints.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+          <link rel="stylesheet" href="/Municipality/css/admin_complaints.css">
 </head>
 <body>
-
-<div class="main-container">
-    
-    <div class="header">
-        <h2>Complaints</h2>
+    <div class="ManageComplaints_page_con">
+  <div class="ManageComplaints_page">
+    <div class="ManageComplaints_header">
+      <h1>Complaints Management</h1>
+      <button>New Complaint</button>
     </div>
+    <p>Here you can view and manage all existing complaints.</p>
+    <h3>Existing Complaints</h3>
 
-    <h3 class="section-title">All Received Complaints</h3>
-
-    <table class="complaints-table">
-        <thead>
+    <div class="ManageComplaints_table_con">
+      <div>
+        <table>
+          <thead>
             <tr>
-                <th>#</th>
-                <th>Citizen Name</th>
-                <th>Email</th>
-                <th>Issue Type</th>
-                <th>Description</th>
-                <th>Date Submitted</th>
-                <th>Status</th>
-                <th>Action</th>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
             <tr>
-                <td>1</td>
-                <td>Mahmoud Smaily</td>
-                <td>mahmoud@mangoli.com</td>
-                <td>Road Damage</td>
-                <td>The road in our area needs repairing.</td>
-                <td>2025-10-28</td>
-                <td><span class="status pending">Pending</span></td>
-                <td>
-                    <button class="resolve-btn">Mark Resolved</button>
-                    <button class="delete-btn">Delete</button>
-                </td>
+              <td style="color: black;">John Doe</td>
+              <td>2025-10-31</td>
+              <td>Road Issue</td>
+              <td>
+                <div>
+                  <p>Pending</p>
+                </div>
+              </td>
+              <td>
+                <div class="ManageCompliants_div_viewBtn">
+                  <p>View</p>
+                </div>
+              </td>
             </tr>
-
-        </tbody>
-    </table>
-
+            <!-- Repeat <tr> for each complaint -->
+          </tbody>
+        </table>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+  </div>
 </div>
-<style>
-    body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #fff;
-}
 
-.main-container {
-    padding: 30px 60px;
-}
-
-.header h2 {
-    font-size: 32px;
-    font-weight: 700;
-    color: #1976ff;
-}
-
-.section-title {
-    margin-top: 25px;
-    font-size: 22px;
-    font-weight: 600;
-    color: #000;
-}
-
-.complaints-table {
-    width: 100%;
-    margin-top: 15px;
-    border-collapse: collapse;
-}
-
-.complaints-table th, .complaints-table td {
-    border: 1px solid #dce7ff;
-    text-align: left;
-    padding: 12px;
-    vertical-align: top;
-}
-
-.status {
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.status.pending {
-    background: #ffe4b2;
-    color: #c27a00;
-}
-
-.status.resolved {
-    background: #b2ffb8;
-    color: #0f7f27;
-}
-
-.resolve-btn, .delete-btn {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.resolve-btn {
-    background: #28a745;
-    color: white;
-}
-
-.delete-btn {
-    background: #ff4d4d;
-    color: white;
-}
-
-</style>
 </body>
 </html>

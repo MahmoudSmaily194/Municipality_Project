@@ -1,7 +1,7 @@
 <?php
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 
-$allowed_pages = ['dashboard', 'news', 'events', 'complaints', 'settings'];
+$allowed_pages = ['dashboard', 'news', 'events' , 'permits', 'complaints', 'settings'];
 
 if (!in_array($page, $allowed_pages)) {
     $page = 'dashboard';

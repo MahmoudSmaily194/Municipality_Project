@@ -1,0 +1,149 @@
+.ManageComplaints_page_con {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-inline-start: 2px solid #1a80e5;
+  margin: 1rem 0 3rem 0;
+}
+
+.ManageComplaints_page {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ManageComplaints_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ManageComplaints_header h1 {
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.ManageComplaints_header button {
+  height: 2rem;
+  width: calc(6rem + 1vw);
+  background-color: transparent;
+  border: 2px solid #1a80e5;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #1a80e5;
+  cursor: pointer;
+}
+
+.ManageComplaints_header button:hover {
+  background-color: #1a80e5;
+  color: #fff;
+}
+
+.ManageComplaints_page p {
+  color: #4f7396;
+  font-weight: 550;
+}
+
+.ManageComplaints_page h3 {
+  margin-top: 2rem;
+  font-weight: 700;
+  font-size: larger;
+}
+
+.ManageComplaints_table_con {
+  margin-top: 1rem;
+  border: 1.5px solid #d1dbe8;
+  border-radius: 12px;
+}
+
+.ManageComplaints_table_con table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ManageComplaints_table_con th {
+  text-align: start;
+  padding-inline-start: 1rem;
+  height: 3rem;
+}
+
+.ManageComplaints_table_con td {
+  border-top: 1.5px solid #d1dbe8;
+  padding-inline-start: 1rem;
+  height: 4.5rem;
+  color: #4f7396;
+  font-weight: 500;
+}
+
+.ManageComplaints_table_con td div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  height: 50%;
+  width: 90%;
+  background-color: #d1dbe8;
+  cursor: pointer;
+}
+
+.ManageComplaints_table_con td div p {
+  font-weight: 700;
+  color: black !important;
+}
+
+.ManageCompliants_div_viewBtn:hover {
+  transform: scale(1.04);
+}
+
+.ManageCompliants_div_viewBtn p:hover {
+  color: #1a80e5 !important;
+}
+
+/* --- Responsive --- */
+@media (max-width: 876px) {
+  .ManageComplaints_page_con {
+    margin-top: 4rem;
+  }
+}
+
+@media (max-width: 636px) {
+  .ManageComplaints_page_con {
+    max-width: 99%;
+    overflow: hidden;
+  }
+
+  .ManageComplaints_table_con > div {
+    overflow-x: auto;
+  }
+
+  .ManageComplaints_table_con table {
+    width: 550px;
+  }
+
+  .ManageComplaints_header button {
+    width: 6rem;
+  }
+
+  .ManageComplaints_header h1 {
+    font-size: 1.5rem;
+  }
+
+  .ManageComplaints_table_con td div p {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 436px) {
+  .ManageComplaints_header h1 {
+    font-size: 1.28rem;
+  }
+
+  .ManageComplaints_page > p {
+    font-size: 0.85rem !important;
+  }
+
+  .ManageComplaints_page > h3 {
+    font-size: 1rem !important;
+  }
+}

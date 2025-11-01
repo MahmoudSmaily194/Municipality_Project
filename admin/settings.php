@@ -3,127 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <title>Settings</title>
-<link rel="stylesheet" href="settings.css">
+<link rel="stylesheet" href="/Municipality/css/settings.css">
 </head>
 <body>
-
-<div class="main-container">
-
-    <div class="header">
-        <h2>Settings</h2>
+<div class="admin_settings_page_con">
+  <div class="admin_settings_page">
+    <div class="settings_header">
+      <h2>Admin Settings</h2>
     </div>
 
-    <div class="settings-box">
+    <div class="adminInfo_card_con">
+      <div class="adminInfo_card">
+        <h3>Admin Information</h3>
 
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <div class="adminProfilePhoto">
+          <div class="adminProfilePhoto_uploade_camera">
+            <label for="file" title="Upload Photo">
+              <i class="fa fa-camera adminProfilePhoto_cameraIcon"></i>
+            </label>
+            <input type="file" accept="image/*" hidden id="file" />
+          </div>
 
-            <h3 class="section-title">Municipality Information</h3>
+          <img src="Admin.png" alt="Admin" />
+        </div>
 
-            <div class="form-group">
-                <label>Municipality Name</label>
-                <input type="text" placeholder="e.g. Lebanon Municipality" required>
-            </div>
+        <div>
+          <div>
+            <i class="fa fa-user"></i>
+            <p>Username</p>
+          </div>
+          <p>John Doe</p>
+        </div>
 
-            <div class="form-group">
-                <label>Upload Logo</label>
-                <input type="file" accept="image/*">
-            </div>
+        <div>
+          <div>
+            <i class="fa fa-envelope"></i>
+            <p>Email</p>
+          </div>
+          <p dir="rtl" class="admin_settings_page_email">...... johndoe@gm</p>
+        </div>
 
-            <hr>
-
-            <h3 class="section-title">Admin Account</h3>
-
-            <div class="form-group">
-                <label>Admin Username</label>
-                <input type="text" placeholder="Enter admin username" required>
-            </div>
-
-            <div class="form-group">
-                <label>New Password</label>
-                <input type="password" placeholder="Enter new password">
-            </div>
-
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" placeholder="Confirm password">
-            </div>
-
-            <button class="save-btn">Save Settings</button>
-
-        </form>
+        <div>
+          <div>
+            <i class="fa fa-shield"></i>
+            <p>Role</p>
+          </div>
+          <p>Admin</p>
+        </div>
+      </div>
     </div>
 
+    <div class="settings_theme_toggle_con">
+      <div class="settings_theme_toggle">
+        <div class="settings_theme_toggle_text">
+          <h3>Appearance</h3>
+          <p>Switch between light and dark mode</p>
+        </div>
+
+        <div class="theme_icon_con" title="Switch to dark mode">
+          <i class="fa fa-moon theme_icon"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings_language_con">
+      <div class="settings_language">
+        <h2>Website Language</h2>
+
+        <div>
+          <input type="radio" id="english" name="language" value="en" checked />
+          <label for="english">English</label>
+        </div>
+
+        <div>
+          <input type="radio" id="arabic" name="language" value="ar" />
+          <label for="arabic">Arabic</label>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<style>
-    body {
-    margin: 0;
-    background: #fff;
-    font-family: 'Segoe UI', sans-serif;
-}
 
-.main-container {
-    padding: 30px 60px;
-}
+<!-- Confirmation popup -->
+<!-- <div class="confirm_overlay">
+  <div class="confirm_box">
+    <h3>Are you sure you want to upload this image?</h3>
+    <div class="confirm_buttons">
+      <button>Yes</button>
+      <button>No</button>
+    </div>
+  </div>
+</div> -->
 
-.header h2 {
-    font-size: 32px;
-    color: #1976ff;
-    font-weight: 700;
-}
-
-.settings-box {
-    margin-top: 20px;
-    padding: 25px;
-    border: 1px solid #dce7ff;
-    border-radius: 12px;
-    background: #fafcff;
-}
-
-.section-title {
-    font-size: 22px;
-    font-weight: 600;
-    color: #1976ff;
-    margin-bottom: 15px;
-}
-
-.form-group {
-    margin-bottom: 18px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-    color: #333;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #cbd7f3;
-    outline: none;
-}
-
-hr {
-    border: none;
-    height: 1px;
-    background: #dce7ff;
-    margin: 25px 0;
-}
-
-.save-btn {
-    background: #1976ff;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-    </style>
+  
 </body>
 </html>

@@ -26,32 +26,32 @@ $current_page = $_GET['page'] ?? 'dashboard';
         </div>
 
         <div class="<?= $current_page == 'news' ? 'active' : '' ?>">
-          <img src="/Municipality/images/houseAdmin.svg" alt="">
+          <img src="/Municipality/images/landmark.svg" alt="">
           <a href="admin.php?page=news">News</a>
         </div>
 
         <div class="<?= $current_page == 'events' ? 'active' : '' ?>">
-          <img src="/Municipality/images/houseAdmin.svg" alt="">
+          <img src="/Municipality/images/calendar.svg" alt="">
           <a href="admin.php?page=events">Events</a>
         </div>
 
-        <div class="<?= $current_page == 'services' ? 'active' : '' ?>">
-          <img src="/Municipality/images/houseAdmin.svg" alt="">
-          <a href="admin.php?page=services">Services</a>
+        <div class="<?= $current_page == 'permits' ? 'active' : '' ?>">
+          <img src="/Municipality/images/book.svg" alt="">
+          <a href="admin.php?page=permits">Permits</a>
         </div>
 
         <div class="<?= $current_page == 'complaints' ? 'active' : '' ?>">
-          <img src="/Municipality/images/houseAdmin.svg" alt="">
+          <img src="/Municipality/images/flag.svg" alt="">
           <a href="admin.php?page=complaints">Complaints</a>
         </div>
 
         <div class="<?= $current_page == 'settings' ? 'active' : '' ?>">
-          <img src="/Municipality/images/houseAdmin.svg" alt="">
+          <img src="/Municipality/images/gear.svg" alt="">
           <a href="admin.php?page=settings">Settings</a>
         </div>
 
         <div class="<?= $current_page == 'logout' ? 'active' : '' ?>">
-          <img src="/Municipality/images/houseAdmin.svg" alt="">
+          <img src="/Municipality/images/right-from-bracket.svg" alt="">
           <a href="admin.php?page=logout">Logout</a>
         </div>
 
