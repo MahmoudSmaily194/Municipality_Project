@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.admin_login_page {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("/Municipality_Project/images/AdminLoginBg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin_login_form_con {
+  width: 37%;
+  background-color: #ffffff;
+  border-radius: 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin_login_header {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin_login_header h1 {
+  font-weight: 500;
+  color: #333;
+  font-size: larger;
+}
+
+.admin_login_header h2 {
+  font-weight: 400;
+  color: #1a80e5;
+}
+
+.admin_login_form_con form {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin_login_form_con form div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin_login_form_con label {
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+
+.admin_login_form_con input {
+  height: 2rem;
+  width: 100%;
+  padding-left: 0.7rem;
+  border: 1px solid #666;
+  border-radius: 10px;
+}
+
+.admin_login_form_con a {
+  border-bottom: 1.5px solid black;
+  font-size: 0.8rem;
+}
+
+.admin_login_form_con button {
+  border: none;
+  border-radius: 28px;
+  background-color: #1a80e5;
+  font-weight: 700;
+  height: 2.5rem;
+  color: #fff;
+  width: 65%;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 767px) {
+  .admin_login_form_con {
+    width: 65%;
+  }
+}
+
+@media (max-width: 567px) {
+  .admin_login_form_con {
+    width: 75%;
+  }
+}
+
+@media (max-width: 467px) {
+  .admin_login_form_con {
+    width: 90%;
+  }
+}

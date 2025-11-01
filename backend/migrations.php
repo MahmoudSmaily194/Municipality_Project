@@ -12,7 +12,7 @@ try {
             first_name VARCHAR(50) NULL,
             last_name VARCHAR(50) NULL,
             email VARCHAR(50) NOT NULL UNIQUE,
-            password_hash VARCHAR(50) NOT NULL,
+            password_hash VARCHAR(70) NOT NULL,
             phone_number VARCHAR(50) NULL,
             role VARCHAR(50) NOT NULL,
             profile_photo VARCHAR(50) NULL,

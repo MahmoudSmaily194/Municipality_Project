@@ -1,10 +1,16 @@
+<?php
+if (!defined('IS_ADMIN_PANEL')) {
+    header('Location: /Municipality_Project/admin/login.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-          <link rel="stylesheet" href="/Municipality/css/admin_complaints.css">
+          <link rel="stylesheet" href="/Municipality_Project/css/admin_complaints.css">
 </head>
 <body>
     <div class="ManageComplaints_page_con">

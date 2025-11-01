@@ -1,9 +1,15 @@
+<?php
+if (!defined('IS_ADMIN_PANEL')) {
+    header('Location: /Municipality_Project/admin/login.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Settings</title>
-<link rel="stylesheet" href="/Municipality/css/settings.css">
+<link rel="stylesheet" href="/Municipality_Project/css/settings.css">
 </head>
 <body>
 <div class="admin_settings_page_con">

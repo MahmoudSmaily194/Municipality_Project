@@ -7,7 +7,7 @@ button {
 }
 .home {
   background-image: linear-gradient(to right, #0000001a 10%, #00000066 40%),
-    url("/Municipality/images/Home.png");
+    url("/Municipality_Project/images/Home.png");
 
   height: 100vh;
   width: 100%;

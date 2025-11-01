@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/contact.css?v=3" />
+    <link rel="stylesheet" href="/Municipality_Project/css/contact.css?v=3" />
       <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -55,63 +55,63 @@
           <h3>Council Members</h3>
           <div class="councel_members">
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
             <div>
-              <img src="/Municipality/images/mahmoud.jpg" alt="" />
+              <img src="/Municipality_Project/images/mahmoud.jpg" alt="" />
               <p>Member</p>
             </div>
           </div>
