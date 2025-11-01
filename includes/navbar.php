@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Navbar Test</title>
-    <link rel="stylesheet" href="/Municipality_Project/css/navbar.css?v=9" />
-    <link rel="stylesheet" href="/Municipality_Project/css/style.css" />
+    <link rel="stylesheet" href="/Municipality/css/navbar.css?v=9" />
+    <link rel="stylesheet" href="/Municipality/css/style.css" />
   </head>
   <body>
     <div class="navbar_con"></div>
@@ -15,10 +15,10 @@
 
       const navbar = `
         <div class="logo_con">
-        <img src="/Municipality_Project/images/icon.png" alt="logo" />
+        <img src="/Municipality/images/icon.png" alt="logo" />
         <h2>Lebanon Municipality  </h2>
         </div>
-        <img class="menuIcon" src="/Municipality_Project/images/bars.svg" alt="menu icon" />
+        <img class="menuIcon" src="/Municipality/images/bars.svg" alt="menu icon" />
         <nav class="navbar">
         <a href="index.php?page=home">Home</a>
         <a href="index.php?page=permits">Permits</a>
@@ -32,18 +32,18 @@
 
       const sideBar = `
         <div class="logo_con">
-        <img src="/Municipality_Project/images/icon.png" alt="logo" />
+        <img src="/Municipality/images/icon.png" alt="logo" />
         <h2>Lebanon Municipality  </h2>
         </div>
-        <img class="menuIcon" src="/Municipality_Project/images/bars.svg" alt="menu icon" />
+        <img class="menuIcon" src="/Municipality/images/bars.svg" alt="menu icon" />
         <div class="side_navbar_con" id="close">
           <nav class="side_navbar">
-            <div class="active"><img src="/Municipality_Project/images/house.svg" /><a href="index.php?page=home">Home</a></div>
-            <div><img src="/Municipality_Project/images/landmark.svg" /><a href="index.php?page=about">Services</a></div>
-            <div><img src="/Municipality_Project/images/house.svg" /><a href="index.php?page=news">News</a></div>
-            <div><img src="/Municipality_Project/images/house.svg" /><a href="index.php?page=events">Events</a></div>
-            <div><img src="/Municipality_Project/images/house.svg" /><a href="index.php?page=complaints">Public Complaints</a></div>
-            <div><img src="/Municipality_Project/images/house.svg" /><a href="index.php?page=contact">Contact</a></div>
+            <div class="active"><img src="/Municipality/images/house.svg" /><a href="index.php?page=home">Home</a></div>
+            <div><img src="/Municipality/images/landmark.svg" /><a href="index.php?page=about">Services</a></div>
+            <div><img src="/Municipality/images/house.svg" /><a href="index.php?page=news">News</a></div>
+            <div><img src="/Municipality/images/house.svg" /><a href="index.php?page=events">Events</a></div>
+            <div><img src="/Municipality/images/house.svg" /><a href="index.php?page=complaints">Public Complaints</a></div>
+            <div><img src="/Municipality/images/house.svg" /><a href="index.php?page=contact">Contact</a></div>
           </nav>
         </div>
       `;

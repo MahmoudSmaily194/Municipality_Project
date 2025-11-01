@@ -1,21 +1,21 @@
 @font-face {
   font-family: "sans";
-  src: url(/Municipality_Project/fonts/PublicSans-Black.ttf);
+  src: url(/Municipality/fonts/PublicSans-Black.ttf);
   font-weight: 800;
 }
 @font-face {
   font-family: "sans";
-  src: url(/Municipality_Project/fonts/PublicSans-Bold.ttf);
+  src: url(/Municipality/fonts/PublicSans-Bold.ttf);
   font-weight: 700;
 }
 @font-face {
   font-family: "sans";
-  src: url(/Municipality_Project/fonts/PublicSans-ExtraBold.ttf);
+  src: url(/Municipality/fonts/PublicSans-ExtraBold.ttf);
   font-weight: 600;
 }
 @font-face {
   font-family: "sans";
-  src: url(/Municipality_Project/fonts/PublicSans-Medium.ttf);
+  src: url(/Municipality/fonts/PublicSans-Medium.ttf);
   font-weight: 500;
 }
 body{

@@ -1,5 +1,5 @@
 <?php
-require_once '/wamp64/www/Municipality_Project/backend/config/db.php';
+require_once '/wamp64/www/Municipality/backend/config/db.php';
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 

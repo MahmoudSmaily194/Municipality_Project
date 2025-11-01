@@ -1,6 +1,6 @@
 <?php
 if (!defined('IS_ADMIN_PANEL')) {
-    header('Location: /Municipality_Project/admin/login.php');
+    header('Location: /Municipality/admin/login.php');
     exit;
 }
 ?>
@@ -10,7 +10,7 @@ if (!defined('IS_ADMIN_PANEL')) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality_Project/css/dashboard.css">
+    <link rel="stylesheet" href="/Municipality/css/dashboard.css">
 </head>
 <body>
  <div class="dashboard_page_con">
@@ -40,19 +40,19 @@ if (!defined('IS_ADMIN_PANEL')) {
         <h2>Recent Activity</h2>
         <div class="notifications">
          <div class="notific">
-            <div><img src="/Municipality_Project/images/bullhorn.svg" alt=""></div>
+            <div><img src="/Municipality/images/bullhorn.svg" alt=""></div>
             <div><h4>Mahmoud Smaily</h4><p>issue type: hello world</p></div>
          </div>
           <div class="notific">
-            <div><img src="/Municipality_Project/images/bullhorn.svg" alt=""></div>
+            <div><img src="/Municipality/images/bullhorn.svg" alt=""></div>
             <div><h4>Mahmoud Smaily</h4><p>issue type: hello world</p></div>
          </div>
           <div class="notific">
-            <div><img src="/Municipality_Project/images/bullhorn.svg" alt=""></div>
+            <div><img src="/Municipality/images/bullhorn.svg" alt=""></div>
             <div><h4>Mahmoud Smaily</h4><p>issue type: hello world</p></div>
          </div>
           <div class="notific">
-            <div><img src="/Municipality_Project/images/bullhorn.svg" alt=""></div>
+            <div><img src="/Municipality/images/bullhorn.svg" alt=""></div>
             <div><h4>Mahmoud Smaily</h4><p>issue type: hello world</p></div>
          </div>
          </div>

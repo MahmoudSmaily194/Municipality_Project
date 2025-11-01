@@ -1,6 +1,6 @@
 <?php
 if (!defined('IS_ADMIN_PANEL')) {
-    header('Location: /Municipality_Project/admin/login.php');
+    header('Location: /Municipality/admin/login.php');
     exit;
 }
 ?>
@@ -10,7 +10,7 @@ if (!defined('IS_ADMIN_PANEL')) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-      <link rel="stylesheet" href="/Municipality_Project/css/admin_permits.css?v=2">
+      <link rel="stylesheet" href="/Municipality/css/admin_permits.css?v=2">
 </head>
 <body>
     <div class="ManageServices_page_con">

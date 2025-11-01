@@ -1,6 +1,6 @@
 <?php
 if (!defined('IS_ADMIN_PANEL')) {
-    header('Location: /Municipality_Project/admin/login.php');
+    header('Location: /Municipality/admin/login.php');
     exit;
 }
 ?>
@@ -10,7 +10,7 @@ if (!defined('IS_ADMIN_PANEL')) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality_Project/css/admin_news.css">
+    <link rel="stylesheet" href="/Municipality/css/admin_news.css">
 </head>
 <body><div class="news_dashboard_page_con">
   <div class="news_dashboard_page">
@@ -52,15 +52,15 @@ if (!defined('IS_ADMIN_PANEL')) {
   </div>
 
   <div class="AddNews_Con">
-    <div class="AddNews">
+    <form class="AddNews" action="/Municipality/backend/add_news.php" method="post" enctype="multipart/form-data">
       <h1>Add News</h1>
-      <input type="text" placeholder="Title" required maxlength="150" />
-      <textarea placeholder="Description" required maxlength="1000"></textarea>
+      <input type="text" name="title"  placeholder="Title" required maxlength="150" />
+      <textarea placeholder="Description" name="description" required maxlength="1000"></textarea>
 
       <div class="visibility_con">
         <p>Visibility</p>
         <div class="form_control">
-          <select required>
+          <select name="visibility"  required>
             <option value="0">Private</option>
             <option value="1">Public</option>
           </select>
@@ -74,13 +74,13 @@ if (!defined('IS_ADMIN_PANEL')) {
   <h3>Upload Image</h3>
   <p>Drag & drop an image here or click to select</p>
   <label for="file">Upload</label>
-  <input type="file" accept="image/*" hidden id="file" />
+  <input name="image" type="file" accept="image/*" hidden id="file" />
 </div>
 
       </div>
 
-      <button class="publish_news">Publish</button>
-    </div>
+      <button type="submit"  class="publish_news">Publish</button>
+    </form>
   </div>
 
 

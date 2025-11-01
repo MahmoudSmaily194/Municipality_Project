@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality_Project/css/complaints.css?v=2">
+    <link rel="stylesheet" href="/Municipality/css/complaints.css?v=2">
   </head>
   <body>
     <div class="complaints_page_con">
@@ -19,7 +19,7 @@
           </select>
           <div class="complaints_page_search_con">
             <input type="text" placeholder="Search" /><img
-              src="/Municipality_Project/images/magnifying-glass.svg"
+              src="/Municipality/images/magnifying-glass.svg"
               alt=""
             />
           </div>
@@ -32,7 +32,7 @@
                <div class="complaint_details"><h3>Details:</h3><p>Springfield's New Community Center Opens Springfield's New Community Center OpensSpringfield's New Community Center Opens</p></div> 
                 <button>Veiw Details</button>
               </div>
-              <img src="/Municipality_Project/images/services2.png" alt="">
+              <img src="/Municipality/images/services2.png" alt="">
             </div>
           </div>
       </div>

@@ -22,6 +22,6 @@ if (ini_get("session.use_cookies")) {
 }
 
 // Redirect to login page
-header("Location: /Municipality_Project/admin/login.php");
+header("Location: /Municipality/admin/login.php");
 exit;
 ?>

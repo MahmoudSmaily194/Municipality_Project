@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '/wamp64/www/Municipality_Project/backend/config/db.php';
+require_once '/wamp64/www/Municipality/backend/config/db.php';
 
 $message = '';
 
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['role'] = $user['role'];
 
             // Redirect to dashboard
-            header("Location: /Municipality_Project/admin.php?page=dashboard");
+            header("Location: /Municipality/admin.php?page=dashboard");
             exit;
         }
     }
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // If user is already logged in, redirect to dashboard
 if (isset($_SESSION['user_id'])) {
-    header("Location: /Municipality_Project/admin.php?page=dashboard");
+    header("Location: /Municipality/admin.php?page=dashboard");
     exit;
 }
 ?>
@@ -48,13 +48,13 @@ if (isset($_SESSION['user_id'])) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Municipality Login</title>
-<link rel="stylesheet" href="/Municipality_Project/css/login.css">
+<link rel="stylesheet" href="/Municipality/css/login.css">
 </head>
 <body>
 <div class="admin_login_page">
     <div class="admin_login_form_con">
         <div class="admin_login_header">
-            <img src="/Municipality_Project/images/icon.png" alt="Logo" />
+            <img src="/Municipality/images/icon.png" alt="Logo" />
             <h1>Municipality</h1>
             <h2>Login</h2>
         </div>

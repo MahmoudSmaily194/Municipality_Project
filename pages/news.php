@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality_Project/css/news.css?v=1">
+    <link rel="stylesheet" href="/Municipality/css/news.css?v=1">
   </head>
   <body>
     <div class="news_page_con">
@@ -19,7 +19,7 @@
           </select>
           <div class="news_page_search_con">
             <input type="text" placeholder="Search" /><img
-              src="/Municipality_Project/images/magnifying-glass.svg"
+              src="/Municipality/images/magnifying-glass.svg"
               alt=""
             />
           </div>
@@ -33,7 +33,7 @@
                 <div>
                 <button>Veiw Details</button></div>
               </div>
-              <img src="/Municipality_Project/images/services2.png" alt="">
+              <img src="/Municipality/images/services2.png" alt="">
             </div>
           </div>
       </div>

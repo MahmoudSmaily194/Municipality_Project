@@ -6,7 +6,7 @@ $loggedin = isset($_SESSION['user_id']);
 
 // Redirect to login if not logged in
 if (!$loggedin) {
-    header("Location: /Municipality_Project/admin/login.php");
+    header("Location: /Municipality/admin/login.php");
     exit;
 }
 define('IS_ADMIN_PANEL', true);
@@ -24,7 +24,7 @@ if (!in_array($page, $allowed_pages)) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Panel</title>
-<link rel="stylesheet" href="/Municipality_Project/css/admin.css">
+<link rel="stylesheet" href="/Municipality/css/admin.css">
 </head>
 <body>
 

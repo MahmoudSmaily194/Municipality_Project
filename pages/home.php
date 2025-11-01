@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality_Project/css/home.css?v=8" />
+    <link rel="stylesheet" href="/Municipality/css/home.css?v=8" />
   </head>
   <body>
     <div class="home">
@@ -31,31 +31,31 @@
     <div class="quick_access_con_title"><h1>Quick Access</h1></div>
     <div class="quick_access">
       <div>
-        <img src="/Municipality_Project/images/payBell.png" alt="payBell" />
+        <img src="/Municipality/images/payBell.png" alt="payBell" />
         <p>Pay Bills</p>
       </div>
       <div>
-        <img src="/Municipality_Project/images/permits.png" alt="permits" />
+        <img src="/Municipality/images/permits.png" alt="permits" />
         <p>Apply for Permits</p>
       </div>
 
       <div>
-        <img src="/Municipality_Project/images/trash.png" alt="trash" />
+        <img src="/Municipality/images/trash.png" alt="trash" />
         <p>Trash Schedule</p>
       </div>
       <div>
-        <img src="/Municipality_Project/images/report.png" alt="report" />
+        <img src="/Municipality/images/report.png" alt="report" />
         <p>Report a Problem</p>
       </div>
     </div>
     </div>
     <script>
       const images = [
-        "/Municipality_Project/images/explore.jpg",
-        "/Municipality_Project/images/olive.jpg",
-        "/Municipality_Project/images/potato.jpg",
-        "/Municipality_Project/images/town.jpg",
-        "/Municipality_Project/images/colorsBack.jpg",
+        "/Municipality/images/explore.jpg",
+        "/Municipality/images/olive.jpg",
+        "/Municipality/images/potato.jpg",
+        "/Municipality/images/town.jpg",
+        "/Municipality/images/colorsBack.jpg",
       ];
       function renderCarousel() {
         const carouselContainer = document.querySelector(".carousel_container");

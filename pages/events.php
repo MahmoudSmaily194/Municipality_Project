@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality_Project/css/events.css?v=3">
+    <link rel="stylesheet" href="/Municipality/css/events.css?v=3">
   </head>
   <body>
     <div class="events_page_con">
@@ -19,7 +19,7 @@
           </select>
           <div class="events_page_search_con">
             <input type="text" placeholder="Search" /><img
-              src="/Municipality_Project/images/magnifying-glass.svg"
+              src="/Municipality/images/magnifying-glass.svg"
               alt=""
             />
           </div>
@@ -34,7 +34,7 @@
              <div class="event_loc"><h3>Location:</h3><h4 class="permit_tile_h">In the Town castel</h4></div>
                 <button>Veiw Details</button>
               </div>
-              <img src="/Municipality_Project/images/services2.png" alt="">
+              <img src="/Municipality/images/services2.png" alt="">
             </div>
                   <div class="event">
               <div class="event_header">
@@ -44,7 +44,7 @@
              <div class="event_loc"><h3>Location:</h3><h4 class="permit_tile_h">In the Town castel</h4></div>
                 <button>Veiw Details</button>
               </div>
-              <img src="/Municipality_Project/images/services2.png" alt="">
+              <img src="/Municipality/images/services2.png" alt="">
             </div>
           </div>
       </div>

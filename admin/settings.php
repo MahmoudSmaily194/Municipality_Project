@@ -1,6 +1,6 @@
 <?php
 if (!defined('IS_ADMIN_PANEL')) {
-    header('Location: /Municipality_Project/admin/login.php');
+    header('Location: /Municipality/admin/login.php');
     exit;
 }
 ?>
@@ -9,7 +9,7 @@ if (!defined('IS_ADMIN_PANEL')) {
 <head>
 <meta charset="UTF-8">
 <title>Settings</title>
-<link rel="stylesheet" href="/Municipality_Project/css/settings.css">
+<link rel="stylesheet" href="/Municipality/css/settings.css">
 </head>
 <body>
 <div class="admin_settings_page_con">
