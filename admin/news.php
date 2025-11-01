@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/admin_news.css?v=2">
+    <link rel="stylesheet" href="/Municipality_Project/css/admin_news.css">
 </head>
 <body><div class="news_dashboard_page_con">
   <div class="news_dashboard_page">
