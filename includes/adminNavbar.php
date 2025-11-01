@@ -52,7 +52,7 @@ $current_page = $_GET['page'] ?? 'dashboard';
 
         <div class="<?= $current_page == 'logout' ? 'active' : '' ?>">
           <img src="/Municipality/images/right-from-bracket.svg" alt="">
-          <a href="admin.php?page=logout">Logout</a>
+          <a href="/Municipality/admin/logout.php">Logout</a>
         </div>
 
       </nav>

@@ -1,3 +1,9 @@
+<?php
+if (!defined('IS_ADMIN_PANEL')) {
+    header('Location: /Municipality/admin/login.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
