@@ -25,7 +25,7 @@ if (!defined('IS_ADMIN_PANEL')) {
   <div class="events_control_page">
     <div class="events_control_page_header">
       <h1>Events Management</h1>
-      <button>Add Event</button>
+      <button><a href="admin.php?page=addEventModel">Add Event</a></button>
     </div>
 
     <p>Add or manage events in the system.</p>
