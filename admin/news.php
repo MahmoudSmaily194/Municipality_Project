@@ -4,7 +4,7 @@ if (!defined('IS_ADMIN_PANEL')) {
     exit;
 }
 
-require_once '/wamp64/www/Municipality/backend/config/db.php';
+require_once '/xampp/htdocs/Municipality/backend/config/db.php';
 
 try {
     $stmt = $pdo->query("SELECT id, title, created_at, visibility FROM news ORDER BY created_at DESC");
