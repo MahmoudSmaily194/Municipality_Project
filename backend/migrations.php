@@ -74,7 +74,8 @@ try {
     // 5. News
     // ---------------------
     $pdo->exec("
-        CREATE TABLE IF NOT EXISTS news (
+        DROP TABLE IF EXISTS `news`;
+        CREATE TABLE IF NOT EXISTS `news` (
             id CHAR(36) PRIMARY KEY,
             title VARCHAR(50),
             slug VARCHAR(50) UNIQUE,
