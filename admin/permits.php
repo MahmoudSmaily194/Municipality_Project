@@ -17,13 +17,13 @@ if (!defined('IS_ADMIN_PANEL')) {
   <div class="manageServices_page">
     <div class="manageServices_header">
       <h1>Services Management</h1>
-      <button>Add Service</button>
+      <button><a href="admin.php?page=addPermitModel">Add Permit</a></button>
     </div>
 
-    <p>Add or manage services in the system.</p>
+    <p>Add or manage permits in the system.</p>
 
     <div class="add_category">
-      <h3>Existing Services</h3>
+      <h3>Existing Permits</h3>
       <button>Add Category</button>
     </div>
 
@@ -32,7 +32,7 @@ if (!defined('IS_ADMIN_PANEL')) {
         <table>
           <thead>
             <tr>
-              <th>Service Name</th>
+              <th>Permit Name</th>
               <th>Category</th>
               <th>Status</th>
               <th>Actions</th>

@@ -1,0 +1,196 @@
+.serviceModel_page {
+  width: 100%;
+  margin-top: 1rem;
+  border-inline-start: 2px solid #1a80e5;
+  display: flex;
+  justify-content: center;
+}
+
+.serviceModel {
+  margin-top: 3rem;
+  width: 70%;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.serviceModel_header {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background-color: #1a80e5;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.serviceModel_header h1 {
+  width: 80%;
+  color: white;
+}
+
+.serviceModel_form_con {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.serviceModel_form_con form {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.serviceModel_inpts_con {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.serviceModel_form_con form input,
+.serviceModel_form_con form textarea,
+.serviceModel_form_con form select {
+  background-color: #e8edf2;
+  border: none;
+  border-radius: 8px;
+  padding-inline-start: 1rem;
+  font-size: 1rem;
+  color: #4f7396;
+}
+.serviceModel_form_con form select {
+  height: 2.5rem;
+}
+.serviceModel_form_con form input {
+  height: 2.5rem;
+}
+
+.serviceModel_form_con form textarea {
+  resize: none;
+  height: 8rem;
+}
+
+.serviceModel_status_btns {
+  display: flex;
+  gap: 1rem;
+}
+
+.serviceModel_status_btns button {
+  height: 2.5rem;
+  width: 50%;
+  font-weight: 700;
+  background-color: transparent;
+  border: 2px solid #1a80e5;
+  border-radius: 10px;
+  color: #1a80e5;
+  cursor: pointer;
+}
+
+.serviceModel_status_btns button:hover {
+  background-color: #1a80e5;
+  color: white;
+}
+
+.active {
+  background-color: #1a80e5 !important;
+  color: white !important;
+}
+
+.serviceModel_upload_photo label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #4f7396;
+  font-weight: 600;
+}
+
+.serviceModel_form_btns {
+  margin-top: 2rem;
+  border-top: 2px solid #1a80e5;
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.serviceModel_form_btns button {
+  border: 2px solid #1a80e5;
+  background-color: #1a80e5;
+  color: white;
+  height: 2.5rem;
+  width: 8rem;
+  margin-inline-end: 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.serviceModel_form_btns button:hover {
+  border-color: #0d61b5;
+  background-color: #0d61b5;
+}
+
+@media (max-width: 675px) {
+  .serviceModel {
+    width: 90%;
+  }
+
+  .serviceModel_form_con form input {
+    width: 100%;
+    font-size: 0.8rem;
+    padding-inline-start: 0.3rem;
+  }
+
+  .serviceModel label {
+    font-size: 0.8rem;
+  }
+}
+.serviceModel_upload_photo {
+  height: 17rem;
+}
+
+.news_upload_image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+  border: 2px dashed #1a80e5;
+  width: 100%;
+  height: 100%;
+}
+
+.news_upload_image label {
+  padding: 0.8rem 1.5rem;
+  background-color: #1a80e5;
+  color: white;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.image_cont {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.image_cont img {
+  width: 100%;
+  height: 100%;
+}
+
+.image_cont .x_icon {
+  position: absolute;
+  top: 0.3rem;
+  left: 0.3rem;
+  font-size: 1.5rem;
+}
+
+.dragging {
+  border: 2px dashed #3498db;
+  background-color: #f0f8ff;
+}
