@@ -17,11 +17,10 @@ if (!defined('IS_ADMIN_PANEL')) {
   <div class="ManageComplaints_page">
     <div class="ManageComplaints_header">
       <h1>Complaints Management</h1>
-      <button>New Complaint</button>
+      <button><a href="admin.php?page=addIssueType">Add Issue Type</a></button>
     </div>
     <p>Here you can view and manage all existing complaints.</p>
     <h3>Existing Complaints</h3>
-
     <div class="ManageComplaints_table_con">
       <div>
         <table>

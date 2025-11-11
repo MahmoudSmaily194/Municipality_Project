@@ -1,5 +1,6 @@
 <?php
 require_once '/xampp/htdocs/Municipality/backend/config/db.php';
+
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 
@@ -66,7 +67,9 @@ try {
             image_url VARCHAR(255) NULL,
             location VARCHAR(255) NULL,
             date DATETIME NULL,
-            marked_as_done TINYINT(1) DEFAULT 0
+            marked_as_done TINYINT(1) DEFAULT 0,
+            created_by CHAR(36) NULL,
+            FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
         );
     ");
 
@@ -82,7 +85,9 @@ try {
             image_url VARCHAR(255) NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            visibility INT DEFAULT 1
+            visibility INT DEFAULT 1,
+            created_by CHAR(36) NULL,
+            FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
         );
     ");
 
@@ -111,11 +116,13 @@ try {
             status INT DEFAULT 1,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            FOREIGN KEY (category_id) REFERENCES services_categories(id) ON DELETE SET NULL
+            created_by CHAR(36) NULL,
+            FOREIGN KEY (category_id) REFERENCES services_categories(id) ON DELETE SET NULL,
+            FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
         );
     ");
 
-    echo "All tables created successfully!\n";
+    echo "All tables created successfully with created_by fields added!\n";
 
 } catch (PDOException $e) {
     echo 'Connection failed: ' . $e->getMessage();

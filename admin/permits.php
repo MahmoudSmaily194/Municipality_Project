@@ -24,7 +24,7 @@ if (!defined('IS_ADMIN_PANEL')) {
 
     <div class="add_category">
       <h3>Existing Permits</h3>
-      <button>Add Category</button>
+      <button><a href="admin.php?page=addPermitCateg">Add Category</a></button>
     </div>
 
     <div class="manageServices_table_con">
@@ -61,10 +61,7 @@ if (!defined('IS_ADMIN_PANEL')) {
     </div>
   </div>
 
-  <!-- Delete Dialog placeholder -->
-  <div class="delete_row_dialog">
-    <!-- DeleteRowDialog content -->
-  </div>
+
 </div>
 
 </body>

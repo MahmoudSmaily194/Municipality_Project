@@ -1,0 +1,129 @@
+.issueTypeModal_page_con {
+  border-inline-start: 2px solid #1a80e5;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.issueTypeModal_page {
+  width: 60%;
+  margin: 3rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  padding-bottom: 2rem;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+}
+
+.issueTypeModal_header {
+  width: 100%;
+  background-color: #1a80e5;
+  color: white;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px 12px 0 0;
+}
+
+.issueTypeModal_header h1 {
+  font-weight: 700;
+}
+
+.issueTypeModal_body {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+}
+
+.issueTypeModal_inpts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.issuetypeInpt {
+  display: flex;
+  gap: 2rem;
+  height: 3.5rem;
+}
+
+.issuetypeInpt div {
+  flex: 1;
+}
+
+.issueTypeModal_inpts input {
+  height: 2.5rem;
+  width: 100%;
+  border: none;
+  background-color: #e8edf2;
+  border-radius: 8px;
+  padding-inline-start: 1rem;
+  font-weight: 500;
+  color: #4f7396;
+}
+
+.issueTypeModal_inpts input::placeholder {
+  color: #4f7396;
+}
+
+.issueTypeModal_inpts button {
+  width: 20%;
+  height: 2.5rem;
+  border: none;
+  background-color: #1a80e5;
+  color: white;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.issueTypeModal_inpts button:hover {
+  background-color: #136dc7;
+}
+
+.issueTypeModal_issues {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.issueTypeModal_issue {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.issueTypeModal_issue div {
+  flex: 1;
+  border: 2px solid #1a80e5;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.issueTypeModal_trash_icon {
+  filter: invert(18%) sepia(92%) saturate(7480%) hue-rotate(359deg)
+    brightness(95%) contrast(115%);
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
+.issueTypeModal_trash_icon:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 576px) {
+  .issueTypeModal_page {
+    width: 90%;
+  }
+}
