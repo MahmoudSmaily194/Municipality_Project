@@ -10,13 +10,13 @@ try {
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS users (
             id CHAR(36) PRIMARY KEY,
-            first_name VARCHAR(255) NULL,
-            last_name VARCHAR(255) NULL,
-            email VARCHAR(255) NOT NULL UNIQUE,
-            password_hash VARCHAR(255) NOT NULL,
+            first_name VARCHAR(50) NULL,
+            last_name VARCHAR(50) NULL,
+            email VARCHAR(50) NOT NULL UNIQUE,
+            password_hash VARCHAR(70) NOT NULL,
             phone_number VARCHAR(50) NULL,
             role VARCHAR(50) NOT NULL,
-            profile_photo VARCHAR(255) NULL,
+            profile_photo VARCHAR(50) NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         );
@@ -28,7 +28,7 @@ try {
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS complaints (
             id CHAR(36) PRIMARY KEY,
-            full_name VARCHAR(255),
+            full_name VARCHAR(50),
             phone_number VARCHAR(50),
             description TEXT,
             importance INT DEFAULT 0,
@@ -36,7 +36,7 @@ try {
             visibility INT DEFAULT 1,
             is_seen TINYINT(1) DEFAULT 0,
             issue_id CHAR(36),
-            image_url VARCHAR(255) NULL,
+            image_url VARCHAR(50) NULL,
             latitude DOUBLE NULL,
             longitude DOUBLE NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -50,7 +50,7 @@ try {
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS complaint_issues (
             id CHAR(36) PRIMARY KEY,
-            issue_name VARCHAR(255),
+            issue_name VARCHAR(50),
             is_deleted TINYINT(1) DEFAULT 0
         );
     ");
@@ -61,11 +61,11 @@ try {
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS events (
             id CHAR(36) PRIMARY KEY,
-            title VARCHAR(255),
-            slug VARCHAR(255) UNIQUE,
+            title VARCHAR(50),
+            slug VARCHAR(50) UNIQUE,
             description TEXT NULL,
-            image_url VARCHAR(255) NULL,
-            location VARCHAR(255) NULL,
+            image_url VARCHAR(50) NULL,
+            location VARCHAR(50) NULL,
             date DATETIME NULL,
             marked_as_done TINYINT(1) DEFAULT 0,
             created_by CHAR(36) NULL,
@@ -77,12 +77,13 @@ try {
     // 5. News
     // ---------------------
     $pdo->exec("
-        CREATE TABLE IF NOT EXISTS news (
+        DROP TABLE IF EXISTS `news`;
+        CREATE TABLE IF NOT EXISTS `news` (
             id CHAR(36) PRIMARY KEY,
-            title VARCHAR(255),
-            slug VARCHAR(255) UNIQUE,
+            title VARCHAR(50),
+            slug VARCHAR(50) UNIQUE,
             description TEXT NULL,
-            image_url VARCHAR(255) NULL,
+            image_url VARCHAR(50) NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             visibility INT DEFAULT 1,
@@ -97,7 +98,7 @@ try {
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS services_categories (
             id CHAR(36) PRIMARY KEY,
-            name VARCHAR(255),
+            name VARCHAR(50),
             is_deleted TINYINT(1) DEFAULT 0
         );
     ");
@@ -109,10 +110,10 @@ try {
         CREATE TABLE IF NOT EXISTS services (
             id CHAR(36) PRIMARY KEY,
             category_id CHAR(36) NULL,
-            title VARCHAR(255),
-            slug VARCHAR(255) NULL,
+            title VARCHAR(50),
+            slug VARCHAR(50) NULL,
             description TEXT NULL,
-            image_url VARCHAR(255) NULL,
+            image_url VARCHAR(50) NULL,
             status INT DEFAULT 1,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

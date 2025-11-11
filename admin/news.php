@@ -4,7 +4,7 @@ if (!defined('IS_ADMIN_PANEL')) {
     exit;
 }
 
-require_once '/xampp/htdocs/Municipality/backend/config/db.php';
+require_once '/wamp64/www/Municipality/backend/config/db.php';
 
 try {
     $stmt = $pdo->query("SELECT id, title, created_at, visibility FROM news ORDER BY created_at DESC");
@@ -16,10 +16,10 @@ try {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin News</title>
-  <link rel="stylesheet" href="/Municipality/css/admin_news.css?v=2" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Municipality/css/admin_news.css?v=2">
 </head>
 <body>
 
@@ -52,7 +52,7 @@ try {
                   <td>
                     <div>
                       <p class="news_td_div_p" onclick="viewNews('<?= $news['id'] ?>')">View</p>
-                      <p>|</p>
+                      <p>|</p>  
                       <p class="news_td_delete_div_p" onclick="deleteNews('<?= $news['id'] ?>')">Delete</p>
                     </div>
                   </td>
@@ -98,6 +98,5 @@ try {
     </form>
   </div>
 </div>
-
 </body>
 </html>

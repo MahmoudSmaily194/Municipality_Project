@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '/xampp/htdocs/Municipality/backend/config/db.php';
+require_once '/wamp64/www/Municipality/backend/config/db.php';
 
 $message = '';
 
@@ -16,16 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (!$user) {
-            $message = 'Incorrect Email or Password.';
-        } elseif (!password_verify($password, $user['password_hash'])) {
-            $message = 'Incorrect Email or Password.';
-        } else {
-            // Login success: set session
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['first_name'] = $user['first_name'];
-            $_SESSION['last_name'] = $user['last_name'];
-            $_SESSION['email'] = $user['email'];
+            if (!$user) {
+                $message = 'Incorrect Email.';
+            } elseif (!password_verify($password, $user['password_hash'])) {
+                $message = 'Incorrect Password.';
+            } else {
+                // Login success: set session
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['first_name'] = $user['first_name'];
+                $_SESSION['last_name'] = $user['last_name'];
+                $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $user['role'];
 
             // Redirect to dashboard

@@ -14,7 +14,7 @@
     </div>
 
     <div class="eventModel_form_con">
-      <form>
+      <form method="post" enctype="multipart/form-data" action="/Municipality/backend/add_events.php">
         <div class="eventModel_inpts_con">
           <div class="eventModel_form_title_date_inpts">
             <div class="event_title_inp_div">
@@ -22,6 +22,7 @@
                 id="title"
                 type="text"
                 placeholder="Enter title"
+                name ="title"
                 maxlength="150"
                 required
               />
@@ -43,6 +44,8 @@
           <textarea
             id="descri"
             maxlength="1000"
+            placeholder="Enter description"
+            name="description"
             required
           ></textarea>
 
@@ -53,6 +56,7 @@
             id="loca"
             type="text"
             placeholder="Location"
+            name="location"
             maxlength="200"
           />
 
@@ -71,7 +75,7 @@
           <button class="eventModel_addEvent_btn" type="submit">
          Submit
           </button>
-          <button type="button">Close
+          <button>Close
           </button>
         </div>
       </form>

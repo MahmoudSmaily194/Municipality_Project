@@ -1,7 +1,7 @@
 <?php
 
 
-require_once '/xampp/htdocs/Municipality/backend/config/db.php';
+require_once '/wamp64/www/Municipality/backend/config/db.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title']);
     $description = trim($_POST['description']);

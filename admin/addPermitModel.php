@@ -22,14 +22,16 @@
             type="text"
             placeholder="Enter permit name"
             maxlength="150"
+            name="title"
             required
           />
 
-          <label for="descri">Description</label>
+          <label for="description">Description</label>
           <textarea
-            id="descri"
+            id="description"
             maxlength="1000"
             placeholder="Enter service description"
+            name="description"
             required
           ></textarea>
 
