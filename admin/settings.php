@@ -9,7 +9,7 @@ if (!defined('IS_ADMIN_PANEL')) {
 <head>
 <meta charset="UTF-8">
 <title>Settings</title>
-<link rel="stylesheet" href="/Municipality/css/settings.css">
+<link rel="stylesheet" href="/Municipality/css/settings.css?v=2">
 </head>
 <body>
 <div class="admin_settings_page_con">

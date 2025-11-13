@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<link rel="stylesheet" href="/Municipality/css/addIssueType.css?v=2">
+<link rel="stylesheet" href="/Municipality/css/addIssueType.css?v=3">
 </head>
 <body>
     <div class="issueTypeModal_page_con">

@@ -2,26 +2,34 @@
 if (!defined('IS_ADMIN_PANEL')) {
     header('Location: /Municipality/admin/login.php');
     if (session_status() === PHP_SESSION_NONE) {
-      session_start();
+        session_start();
     }
     session_unset();
     session_destroy();
     exit;
-
 }
 
+require_once '/xampp/htdocs/Municipality/backend/config/db.php';
 
+// Fetch events from database
+try {
+    $stmt = $pdo->query("SELECT id, title, date, location FROM events ORDER BY date DESC");
+    $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    $events = [];
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/admin_events.css?v=2">
+    <title>Events Management</title>
+    <link rel="stylesheet" href="/Municipality/css/admin_events.css?v=4">
 </head>
 <body>
-    <div class="events_control_page_con">
+<div class="events_control_page_con">
   <div class="events_control_page">
     <div class="events_control_page_header">
       <h1>Events Management</h1>
@@ -44,31 +52,30 @@ if (!defined('IS_ADMIN_PANEL')) {
             </tr>
           </thead>
           <tbody>
-            <!-- Dynamic event rows would appear here -->
-            <tr>
-              <td>Sample Event Title</td>
-              <td>01/11/2025</td>
-              <td>Beirut</td>
-              <td>
-                <div>
-                  <p class="events_edit_btn">View</p>
-                  <p>|</p>
-                  <p class="events_delete_btn">Delete</p>
-                </div>
-              </td>
-            </tr>
+            <?php if (!empty($events)): ?>
+                <?php foreach ($events as $event): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($event['title']); ?></td>
+                        <td><?php echo date('d/m/Y', strtotime($event['date'])); ?></td>
+                        <td><?php echo htmlspecialchars($event['location']); ?></td>
+                        <td>
+                            <div>
+                                <p class="events_edit_btn">View</p>
+                                <p>|</p>
+                                <p class="events_delete_btn">Delete</p>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="4" style="text-align:center;">No events found.</td>
+                </tr>
+            <?php endif; ?>
           </tbody>
         </table>
-
-        <!-- Loader Trigger -->
-        <div style="height: 20px;"></div>
       </div>
     </div>
-  </div>
-
-  <!-- Delete Dialog -->
-  <div class="delete_row_dialog">
-    <!-- DeleteRowDialog component content goes here -->
   </div>
 </div>
 </body>

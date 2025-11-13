@@ -223,3 +223,7 @@ select:focus {
   border: 2px dashed #3498db;
   background-color: #f0f8ff;
 }
+
+a {
+  text-decoration: none !important;
+}

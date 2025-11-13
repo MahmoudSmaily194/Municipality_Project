@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '/wamp64/www/Municipality/backend/config/db.php';
+require_once '/xampp/htdocs/Municipality/backend/config/db.php';
 
 $message = '';
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['first_name'] = $user['first_name'];
                 $_SESSION['last_name'] = $user['last_name'];
                 $_SESSION['email'] = $user['email'];
-            $_SESSION['role'] = $user['role'];
+                $_SESSION['role'] = $user['role'];
 
             // Redirect to dashboard
             header("Location: /Municipality/admin.php?page=dashboard");

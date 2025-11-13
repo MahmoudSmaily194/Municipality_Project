@@ -78,7 +78,7 @@
   gap: 1rem;
 }
 
-.serviceModel_status_btns button {
+.serviceModel_status_btns label {
   height: 2.5rem;
   width: 50%;
   font-weight: 700;
@@ -87,13 +87,15 @@
   border-radius: 10px;
   color: #1a80e5;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.serviceModel_status_btns button:hover {
+.serviceModel_status_btns label:hover {
   background-color: #1a80e5;
   color: white;
 }
-
 .active {
   background-color: #1a80e5 !important;
   color: white !important;

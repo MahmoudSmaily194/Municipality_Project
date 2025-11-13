@@ -87,3 +87,7 @@
   font-size: medium;
   color: #5e7387;
 }
+
+a {
+  text-decoration: none !important;
+}

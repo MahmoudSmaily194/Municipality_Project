@@ -152,3 +152,7 @@
     width: 45%;
   }
 }
+
+a {
+  text-decoration: none !important;
+}
