@@ -1,10 +1,28 @@
+<?php 
+require_once '/xampp/htdocs/Municipality/backend/config/db.php';
+
+try{
+ $sql1 = $pdo->query("
+        SELECT id,name
+        FROM permits_categories 
+        ORDER BY created_at DESC
+    ");
+     $permitsCateg = $sql1->fetchAll(PDO::FETCH_ASSOC);
+}
+catch (PDOException $e) {
+    $permitsCateg = [];
+    echo "Error: " . $e->getMessage();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/addPermitModel.css?v=4">
+    <link rel="stylesheet" href="/Municipality/css/addPermitModel.css?v=5">
 </head>
 <body>
  <div class="serviceModel_page">
@@ -38,10 +56,11 @@
           <label for="categ">Category</label>
           <select id="categ" name="category_id" required>
             <option value="">Select a category</option>
-            <option value="58e3f3fe-c0ae-11f0-9d2c-d481d7fb18a2">Water Supply</option>
-            <option value="2">Waste Management</option>
-            <option value="3">Electricity</option>
-            <option value="4">Health Services</option>
+            <?php if (!empty($permitsCateg)): ?>
+          <?php foreach ($permitsCateg as $Permitcateg): ?>
+              <option value="<?=$Permitcateg['id'] ?>"><?= $Permitcateg['name'] ?></option>
+            <?php endforeach ?>
+            <?php endif ?>
           </select>
 
           <div class="serviceModel_status_btns">
@@ -56,11 +75,29 @@
           <h3>Upload Image</h3>
           <p>Drag & drop an image here or click to select</p>
           <label for="file">Upload</label>
-          <input name="image" type="file" accept="image/*" hidden id="file" />
+          <input name="image" type="file" accept="image/*" hidden id="file" required />
       </div>
           </div>
+          
+        <!-- Add Required Files -->
+        <label style="margin-top: 1rem;" for="">Add Requied Files</label>
+        <div class="permit_required_files_con">
+          <div class="permit_required_files_input">
+            <input id="document_name_input" type="text" name="fileName" placeholder="File Name">
+            <button type="button" onclick="createRequiredFile()">Add</button>
+          </div>
+          <div id="permit_required_files_con" class="permit_required_files">
+            <!-- <div class="permit_required_file">
+              <div class="permit_required_file_name">
+                <h5>Name of the file</h5>
+              </div>
+              <img class="trash_icon" src="/Municipality/images/trash-can.svg">
+            </div> -->
+          </div>
         </div>
-
+        <!-- Add Required Files -->
+        </div>
+        <input type="hidden" name="required_files" id="required_files_input">
         <div class="serviceModel_form_btns">
           <button class="serviceModel_addService_btn" type="submit">
             Add Permit
@@ -73,7 +110,7 @@
 
 
    <script>
-   const activeInput = document.getElementById("active");
+const activeInput = document.getElementById("active");
 const inactiveInput = document.getElementById("inactive");
 const activeLabel = document.querySelector(".event_active");
 const inactiveLabel = document.querySelector(".inActiveLabel");
@@ -94,6 +131,45 @@ inactiveInput.addEventListener("change", updateStatus);
 
 // Initialize on page load
 updateStatus();
+let requiredFiles = [];
+
+const uuid = () =>
+  ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,
+    c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  );
+
+function createRequiredFile() {
+  const input = document.getElementById("document_name_input");
+  const name = input.value.trim();
+  if (!name) return;
+
+  requiredFiles.push({ id: uuid(), name });
+  input.value = "";
+  renderFiles();
+}
+
+function renderFiles() {
+  const con = document.getElementById("permit_required_files_con");
+  con.innerHTML = "";
+
+  requiredFiles.forEach(f => {
+    con.insertAdjacentHTML(
+      "beforeend",
+      `
+      <div class="permit_required_file">
+        <div class="permit_required_file_name"><h5>${f.name}</h5></div>
+        <img class="trash_icon" src="/Municipality/images/trash-can.svg" onclick="deleteFile('${f.id}')">
+      </div>
+      `
+    );
+  });
+   document.getElementById("required_files_input").value = JSON.stringify(requiredFiles);
+}
+
+function deleteFile(id) {
+  requiredFiles = requiredFiles.filter(f => f.id !== id);
+  renderFiles();
+}
 
    </script>
 </body>

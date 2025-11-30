@@ -62,7 +62,7 @@ try {
                             <div>
                                 <p class="events_edit_btn">View</p>
                                 <p>|</p>
-                                <p class="events_delete_btn">Delete</p>
+                                <p class="events_delete_btn"><a href="/Municipality/backend/delete_event.php?id=<?php echo $event['id']; ?>">Delete</a></p>
                             </div>
                         </td>
                     </tr>

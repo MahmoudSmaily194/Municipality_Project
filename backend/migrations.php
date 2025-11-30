@@ -82,6 +82,27 @@ try {
     ");
 
     // ---------------------
+// X. Event Votes
+// ---------------------
+$pdo->exec("
+    CREATE TABLE IF NOT EXISTS event_votes (
+        id CHAR(36) PRIMARY KEY,
+        event_id CHAR(36) NOT NULL,
+        user_id CHAR(36) NOT NULL,
+        vote TINYINT(1) DEFAULT 1, -- always 1 (like/upvote)
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+        CONSTRAINT fk_votes_event
+            FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE,
+
+        CONSTRAINT fk_votes_user
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+
+        CONSTRAINT unique_user_event_vote UNIQUE (event_id, user_id)
+    );
+");
+
+    // ---------------------
     // 5. News
     // ---------------------
     $pdo->exec("
@@ -144,7 +165,7 @@ try {
             status ENUM('pending', 'in_progress', 'completed', 'rejected') DEFAULT 'pending',
             requested_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             completed_at DATETIME NULL,
-            FOREIGN KEY (permit_id) REFERENCES permits(id) ON DELETE SET NULL,
+            FOREIGN KEY (permit_id) REFERENCES permits(id) ON DELETE CASCADE,
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
         );
     ");
@@ -158,15 +179,26 @@ try {
             permit_request_id CHAR(36) NULL,
             updated_by CHAR(36) NULL,
             file_url VARCHAR(255) NULL,
+            note TEXT NULL,
             status ENUM('pending', 'in_progress', 'completed', 'rejected') DEFAULT 'pending',
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (permit_request_id) REFERENCES permits_requests(id) ON DELETE SET NULL,
+            FOREIGN KEY (permit_request_id) REFERENCES permits_requests(id) ON DELETE CASCADE,
             FOREIGN KEY (updated_by) REFERENCES users(id) ON DELETE SET NULL
         );
     ");
-
+     // ---------------------
+    // 10. Permit Required Docs
     // ---------------------
-    // 10. Permit Request Attachments
+    $pdo->exec("
+        CREATE TABLE IF NOT EXISTS permits_required_attachments (
+            id CHAR(36) PRIMARY KEY,
+            permit_id CHAR(36) NULL,
+            document_name VARCHAR(255) NOT NULL,
+            FOREIGN KEY (permit_id) REFERENCES permits(id) ON DELETE CASCADE
+        );
+    ");
+    // ---------------------
+    // 11. Permit Request Attachments
     // ---------------------
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS permits_requests_attachments (
@@ -174,7 +206,7 @@ try {
             permit_request_id CHAR(36) NULL,
             file_url VARCHAR(255) NULL,
             uploaded_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (permit_request_id) REFERENCES permits_requests(id) ON DELETE SET NULL
+            FOREIGN KEY (permit_request_id) REFERENCES permits_requests(id) ON DELETE CASCADE
         );
     ");
 

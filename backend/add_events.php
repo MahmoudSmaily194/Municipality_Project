@@ -13,6 +13,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     if (empty($title) || empty($eventDate) || empty($description) || empty($location)) {
         die("All fields must not be empty");
     }
+    
+    $imagePath = null;
+
+    if (isset($_FILES['imageUpload']) && $_FILES['imageUpload']['error'] === UPLOAD_ERR_OK) {
+        $fileTmpPath = $_FILES['imageUpload']['tmp_name'];
+        $fileName = $_FILES['imageUpload']['name'];
+        $fileExt = pathinfo($fileName, PATHINFO_EXTENSION);
+        $allowedExts = ['jpg','jpeg','png','gif'];
+
+        if (in_array(strtolower($fileExt), $allowedExts)) {
+            $newFileName = uniqid('event_', true) . '.' . $fileExt;
+            $uploadDir = '/xampp/htdocs/Municipality/uploads/';
+            if (!file_exists($uploadDir)) mkdir($uploadDir, 0777, true);
+            $destPath = $uploadDir . $newFileName;
+
+            if (move_uploaded_file($fileTmpPath, $destPath)) {
+                $imagePath = '/Municipality/uploads/' . $newFileName;
+            } else {
+                die('Failed to move uploaded file.');
+            }
+        } else {
+            die('Invalid file type. Only JPG, JPEG, PNG, GIF allowed.');
+        }
+    }
+
     // Generate UUID
     function uuidv4(){
         $data = random_bytes(16);

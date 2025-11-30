@@ -1,10 +1,30 @@
+<?php
+  if (!defined('IS_LOGGEDIN')) {
+      header('Location: /Municipality/admin/login.php');
+      exit;
+  }
+require_once '/xampp/htdocs/Municipality/backend/config/db.php';
+try {
+    $stmt = $pdo->query("
+        SELECT p.id, p.title, p.status,p.description,p.image_url, c.name AS category
+        FROM permits p
+        LEFT JOIN permits_categories c ON p.category_id = c.id
+        ORDER BY p.created_at DESC
+    ");
+    $permits = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    $permits = [];
+   
+    echo "Error: " . $e->getMessage();
+}
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/permits.css?v=1">
+    <link rel="stylesheet" href="/Municipality/css/permits.css?v=4">
   </head>
   <body>
     <div class="permits_page_con">
@@ -26,33 +46,17 @@
          
         </div>
          <div class="permits">
+           <?php foreach ($permits as $permit): ?>
             <div class="permit">
               <div class="permit_header">
-                <h3>Springfield's New Community Center Opens</h3>
-                <p>The new community center offers a variety of programs and activities for residents of all ages.</p>
-                <div><button>Apply Now</button>
+                <h3><?= htmlspecialchars($permit['title']) ?></h3>
+                <p><?= htmlspecialchars($permit['description']) ?></p>
+                <div><button><a href="/Municipality/index.php?page=applyPermit&id=<?php echo $permit['id'] ?>">Apply Now</a></button>
                 <button>Veiw Details</button></div>
               </div>
-              <img src="/Municipality/images/services2.png" alt="">
+              <img src="<?= !empty($permit['image_url']) ? htmlspecialchars($permit['image_url']) : '/Municipality/images/empty.jpg' ?>" alt="Event Image">
             </div>
-               <div class="permit">
-              <div class="permit_header">
-                <h3>Springfield's New Community Center Opens</h3>
-                <p>The new community center offers a variety of programs and activities for residents of all ages.</p>
-                <div><button>Apply Now</button>
-                <button>Veiw Details</button></div>
-              </div>
-              <img src="/Municipality/images/services2.png" alt="">
-            </div>
-               <div class="permit">
-              <div class="permit_header">
-                <h3>Springfield's New Community Center Opens</h3>
-                <p>The new community center offers a variety of programs and activities for residents of all ages.</p>
-                <div><button>Apply Now</button>
-                <button>Veiw Details</button></div>
-              </div>
-              <img src="/Municipality/images/services2.png" alt="">
-            </div>
+            <?php endforeach; ?>
           </div>
       </div>
     </div>

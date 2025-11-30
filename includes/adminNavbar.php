@@ -39,7 +39,10 @@ $current_page = $_GET['page'] ?? 'dashboard';
           <img src="/Municipality/images/book.svg" alt="">
           <a href="admin.php?page=permits">Permits</a>
         </div>
-
+        <div class="<?= $current_page == 'permits_requests' ? 'active' : '' ?>">
+          <img src="/Municipality/images/book.svg" alt="">
+          <a href="admin.php?page=permits_requests">Permits Requests</a>
+        </div>
         <div class="<?= $current_page == 'complaints' ? 'active' : '' ?>">
           <img src="/Municipality/images/flag.svg" alt="">
           <a href="admin.php?page=complaints">Complaints</a>

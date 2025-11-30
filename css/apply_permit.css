@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.apply_permit_page_con {
+  width: 100%;
+  background-color: #f6f6f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.apply_permit_page {
+  margin: 3rem 0;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.apply_permit_page > h1 {
+  font-weight: 700;
+}
+.permit_overview_con {
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.permit_overview {
+  width: 90%;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1.3rem;
+}
+.permit_overview img {
+  width: 35%;
+  height: 15rem;
+  border-radius: 8px;
+}
+.permit_overview_categ_status {
+  display: flex;
+  gap: 1rem;
+}
+.permit_overview_categ_status label {
+  width: 7rem;
+  height: 2rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+.permit_overview_categ {
+  background-color: #dbeafe;
+  color: #2849b3;
+}
+.permit_overview_status {
+  background-color: #dcfce7;
+  color: #46895f;
+}
+.permit_overview_content {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.permit_overview_details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.permit_overview_details h3 {
+  font-weight: 600;
+}
+.permit_required_att_con {
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.permit_required_atts {
+  margin: 1rem 0;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.permit_required_att {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.permit_required_att img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.permit_required_att label {
+  padding: 0.2rem 0;
+  background-color: #f9fafb;
+  color: #858b96;
+  width: 50%;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  justify-content: center;
+  align-items: center;
+}
+.request_information_con {
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.request_information {
+  margin: 1rem 0;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.request_information textarea {
+  width: 100%;
+  height: 5rem;
+  resize: vertical;
+}
+.apply {
+  display: flex;
+  gap: 1rem;
+}
+.apply button {
+  border: none;
+  border-radius: 8px;
+  width: 7rem;
+  height: 2rem;
+  font-weight: 600;
+}
+.apply > :nth-child(2) {
+  color: white;
+  background-color: #1a3d8e;
+}

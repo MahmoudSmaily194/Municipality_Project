@@ -196,3 +196,64 @@
   border: 2px dashed #3498db;
   background-color: #f0f8ff;
 }
+.permit_required_files_con {
+  width: 100%;
+  border: 2px solid #1a80e5;
+  border-radius: 8px;
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.trash_icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: transform 0.1s ease-in-out;
+  cursor: pointer;
+  filter: invert(18%) sepia(92%) saturate(7480%) hue-rotate(359deg)
+    brightness(95%) contrast(115%);
+}
+.permit_required_files_input {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.permit_required_files_input input {
+  width: 60%;
+}
+.permit_required_files_input button {
+  border: none;
+  border-radius: 8px;
+  background-color: #1a80e5;
+  color: white;
+  width: 4rem;
+  height: 2.5rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+.permit_required_files {
+  width: 78%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.permit_required_file {
+  display: flex;
+  width: 100%;
+   gap: 1.5rem;
+}
+.permit_required_file_name {
+  width: 80%;
+  border: 2px solid #1a80e5;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+.permit_required_file_name h5{
+  margin-inline-start: 1rem;
+}

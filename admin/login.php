@@ -27,17 +27,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['last_name'] = $user['last_name'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['role'] = $user['role'];
-
-            // Redirect to dashboard
-            header("Location: /Municipality/admin.php?page=dashboard");
-            exit;
+                 if($_SESSION['role']=="citizen"){
+                 header("Location: /Municipality/index.php?page=home");
+                }
+                 // Redirect to dashboard
+                if($_SESSION['role']=="admin"){
+                 header("Location: /Municipality/admin.php?page=dashboard");
+                }
+                
+                exit;
         }
     }
 }
 
-// If user is already logged in, redirect to dashboard
 if (isset($_SESSION['user_id'])) {
-    header("Location: /Municipality/admin.php?page=dashboard");
+    if ($_SESSION['role'] === 'admin') {
+        header("Location: /Municipality/admin.php?page=dashboard");
+    } else {
+        header("Location: /Municipality/index.php?page=home");
+    }
     exit;
 }
 ?>

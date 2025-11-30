@@ -4,12 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Navbar Test</title>
-    <link rel="stylesheet" href="/Municipality/css/navbar.css?v=9" />
+    <link rel="stylesheet" href="/Municipality/css/navbar.css?v=1" />
     <link rel="stylesheet" href="/Municipality/css/style.css" />
   </head>
   <body>
     <div class="navbar_con"></div>
+<div class="dropdown-wrapper">
+    <div class="dropdown-box">
 
+        <!-- User Info Section -->
+        <div class="user-info">
+            <div class="avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDz77nSGGYv8SfAy9WCRU_IYbRilHy5OERpgnoi5en2yFIhL4aNqtsvyHrBqHurhbX59onHFvauc7kDFPYvKQZIfhB3jxO5Ew9cW0wHqPb4ZhXErdOLXUE81FIG6Qv8oY2mqMUxImdY-v6vUaWMpksBtzqxdVT72M_W0O59KDJMKZlVW49XmDwOlbDq6bD0n3U4Z5ryU1yUyNBX64YJlr-5hTYjU2AFl3zxKVcQ4e7OPm5GAxgHOccjnFioAE8sfN6WUgJNgHpsPT8");'></div>
+            <div class="user-details">
+                <p class="user-name">Citizen Name</p>
+                <p class="user-email">citizen.name@email.com</p>
+            </div>
+        </div>
+
+        <!-- Menu Items -->
+        <div class="menu">
+            <a href="#" class="menu-item">
+                <span class="material-symbols-outlined">person</span>
+                <p>Profile</p>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="material-symbols-outlined">settings</span>
+                <p>Settings</p>
+            </a>
+            <a href="#" class="menu-item">
+                <span class="material-symbols-outlined">description</span>
+                <p>My Requests</p>
+            </a>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Logout -->
+        <a href="#" class="menu-item">
+            <span class="material-symbols-outlined">logout</span>
+            <p>Logout</p>
+        </a>
+ </div>
+    </div>
     <script>
       const navbarContainer = document.querySelector(".navbar_con");
 
@@ -26,7 +62,8 @@
         <a href="index.php?page=events">Events</a>
         <a href="index.php?page=complaints">Public Complaints</a>
         <a href="index.php?page=contact">Contact</a>
-        <div class="langBtn">AR</div>
+        <a href="index.php?page=permits_requests">Permits Requests</a>
+        <img class="sett" src="/Municipality/uploads/mahmoud.jpg"/>
         </nav>
       `;
 

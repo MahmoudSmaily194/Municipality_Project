@@ -11,6 +11,7 @@
   margin-bottom: 2rem;
 }
 .events_page_title {
+  margin-top: 2rem;
   width: 100%;
 }
 .events_page_title h1 {
@@ -65,6 +66,7 @@
   height: 1.5rem;
 }
 .events {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,6 +74,7 @@
   gap: 1.5rem;
 }
 .event {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   gap: 1.5rem;

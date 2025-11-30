@@ -127,3 +127,7 @@
     width: 90%;
   }
 }
+.error{
+  color: red;
+  font-size: small;
+}

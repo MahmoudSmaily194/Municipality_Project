@@ -1,0 +1,105 @@
+digraph Municipality_ERD {
+	rankdir=LR size=10
+	users [label="users
+-----------------
+id (PK)
+first_name
+last_name
+email
+password_hash
+phone_number
+profile_photo
+role
+created_at
+updated_at" shape=box]
+	complaint_issues [label="complaint_issues
+-----------------
+id (PK)
+issue_name
+is_deleted" shape=box]
+	complaints [label="complaints
+-----------------
+id (PK)
+full_name
+phone_number
+description
+importance
+status
+visibility
+is_seen
+issue_id (FK)
+created_at" shape=box]
+	services_categories [label="services_categories
+-----------------
+id (PK)
+name
+is_deleted" shape=box]
+	services [label="services
+-----------------
+id (PK)
+category_id (FK)
+title
+slug
+description
+image_url
+status
+created_at
+updated_at
+created_by (FK)" shape=box]
+	service_requests [label="service_requests
+-----------------
+id (PK)
+service_id (FK)
+user_id (FK)
+assigned_to (FK)
+status
+priority
+requested_at
+completed_at" shape=box]
+	service_request_history [label="service_request_history
+-----------------
+id (PK)
+service_request_id (FK)
+status
+updated_by (FK)
+updated_at" shape=box]
+	service_request_attachments [label="service_request_attachments
+-----------------
+id (PK)
+service_request_id (FK)
+file_url
+uploaded_at" shape=box]
+	events [label="events
+-----------------
+id (PK)
+title
+slug
+description
+image_url
+location
+date
+marked_as_done
+created_by (FK)" shape=box]
+	news [label="news
+-----------------
+id (PK)
+title
+slug
+description
+image_url
+visibility
+created_at
+updated_at
+created_by (FK)" shape=box]
+	complaint_issues -> complaints [label="1:N"]
+	users -> events [label="1:N (created_by)"]
+	users -> news [label="1:N (created_by)"]
+	users -> services [label="1:N (created_by)"]
+	users -> service_requests [label="1:N (user_id)"]
+	users -> service_requests [label="1:N (assigned_to)"]
+	users -> service_request_history [label="1:N (updated_by)"]
+	services_categories -> services [label="1:N"]
+	services -> service_requests [label="1:N"]
+	service_requests -> service_request_history [label="1:N"]
+	service_requests -> service_request_attachments [label="1:N"]
+}

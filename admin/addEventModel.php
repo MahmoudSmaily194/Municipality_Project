@@ -66,7 +66,7 @@
           <h3>Upload Image</h3>
           <p>Drag & drop an image here or click to select</p>
           <label for="file">Upload</label>
-          <input name="image" type="file" accept="image/*" hidden id="file" />
+          <input name="imageUpload" type="file" accept="image/*" hidden id="file" />
       </div>
           </div>
         </div>

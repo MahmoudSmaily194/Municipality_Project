@@ -1,7 +1,6 @@
 <?php
-
-
 require_once '/xampp/htdocs/Municipality/backend/config/db.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title']);
     $description = trim($_POST['description']);
@@ -16,19 +15,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $id = uuidv4();
 
+    function createUniqueSlug($pdo, $title) {
+    $baseSlug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $title)));
+    $slug = $baseSlug;
+    $i = 1;
+
+    while (true) {
+        $stmt = $pdo->prepare("SELECT COUNT(*) FROM news WHERE slug = ?");
+        $stmt->execute([$slug]);
+        if ($stmt->fetchColumn() == 0) {
+            break; // unique
+        }
+        $slug = $baseSlug . '-' . $i;
+        $i++;
+    }
+
+    return $slug;
+    }
+
     // Create slug from title
-    $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $title)));
+  $slug = createUniqueSlug($pdo, $title);
 
     // Handle image upload
     $imagePath = null;
-    if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
-        $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-        $newName = uniqid('news_', true) . '.' . $ext;
-        $uploadDir = '../uploads/news/';
-        if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
-        $targetPath = $uploadDir . $newName;
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
-            $imagePath = '/Municipality/uploads/news/' . $newName;
+    if (isset($_FILES['imageUpload']) && $_FILES['imageUpload']['error'] === UPLOAD_ERR_OK) {
+        $fileTmpPath = $_FILES['imageUpload']['tmp_name'];
+        $fileName = $_FILES['imageUpload']['name'];
+        $fileExt = pathinfo($fileName, PATHINFO_EXTENSION);
+        $allowedExts = ['jpg', 'jpeg', 'png', 'gif'];
+
+        if (in_array(strtolower($fileExt), $allowedExts)) {
+            $newFileName = uniqid('news_', true) . '.' . $fileExt;
+            $uploadDir = '/xampp/htdocs/Municipality/uploads/'; // make sure this folder exists and writable
+            if (!file_exists($uploadDir)) mkdir($uploadDir, 0777, true);
+            $destPath = $uploadDir . $newFileName;
+
+            if (move_uploaded_file($fileTmpPath, $destPath)) {
+                $imagePath = '/Municipality/uploads/' . $newFileName;
+            } else {
+                die('Failed to move uploaded file.');
+            }
+        } else {
+            die('Invalid file type. Only JPG, JPEG, PNG, GIF allowed.');
         }
     }
 
@@ -43,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: /Municipality/admin.php?page=news");
         exit;
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        die("Database Error: " . $e->getMessage());
     }
 }
+?>

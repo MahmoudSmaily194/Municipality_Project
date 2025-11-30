@@ -3,16 +3,16 @@ session_start();
 
 // Check if user is logged in
 $loggedin = isset($_SESSION['user_id']);
-
+$role =$_SESSION['role'];
 // Redirect to login if not logged in
-if (!$loggedin) {
-    header("Location: /Municipality/admin/login.php");
+if(!$loggedin || $role != "admin"){
+    header("Location:/Municipality/admin/login.php");
     exit;
 }
 define('IS_ADMIN_PANEL', true);
 // Determine which page to include
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
-$allowed_pages = ['dashboard', 'news', 'events', 'permits', 'complaints', 'settings','addEventModel','addPermitModel',"addPermitCateg","addIssueType"];
+$allowed_pages = ['dashboard', 'news', 'events', 'permits','permits_requests','permitRequestDetails', 'complaints', 'settings','addEventModel','addPermitModel',"addPermitCateg","addIssueType"];
 
 if (!in_array($page, $allowed_pages)) {
     $page = 'dashboard';

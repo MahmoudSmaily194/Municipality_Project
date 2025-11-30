@@ -1,0 +1,188 @@
+:root {
+  --primary: #4f46e5;
+  --primary-light: #e0e7ff;
+  --background-light: #f8f9fc;
+  --background-dark: #0f172a;
+  --card-light: #ffffff;
+  --card-dark: #1e293b;
+  --text-light-primary: #111827;
+  --text-dark-primary: #f8fafc;
+  --text-light-secondary: #6b7280;
+  --text-dark-secondary: #94a3b8;
+  --border-light: #e5e7eb;
+  --border-dark: #334155;
+  font-family: "Public Sans", sans-serif;
+}
+body {
+  margin: 0;
+  background: var(--background-light);
+  color: var(--text-light-primary);
+}
+.dark body {
+  background: var(--background-dark);
+  color: var(--text-dark-primary);
+}
+h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin: 0;
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+/* ---------- SEARCH BAR + FILTERS ---------- */
+.search-box {
+  display: flex;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: sticky;
+  top: 10px;
+  z-index: 20;
+}
+.dark .search-box {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(51, 65, 85, 0.4);
+}
+.search-input,
+select {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 50px;
+  border: 1px solid var(--border-light);
+}
+.dark .search-input,
+.dark select {
+  border-color: var(--border-dark);
+  background: var(--card-dark);
+  color: var(--text-dark-primary);
+}
+/* ---------- TABLE ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-light);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.dark table {
+  background: var(--card-dark);
+}
+th,
+td {
+  padding: 15px;
+  border-bottom: 1px solid var(--border-light);
+}
+.dark th,
+.dark td {
+  border-color: var(--border-dark);
+}
+th {
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-light-secondary);
+}
+.dark th {
+  color: var(--text-dark-secondary);
+}
+tr:hover {
+  transform: scale(1.01);
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+/* ---------- BADGE STYLES ---------- */
+.badge {
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.badge.completed {
+  background: #d1fae5;
+  color: #047857;
+}
+.badge.in_progress {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+.badge.pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+.badge.rejected {
+  background: #fee2e2;
+  color: #dc2626;
+}
+.priority-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+}
+tr button {
+  background: linear-gradient(135deg, #6a5acd, #00bfff);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+tr button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- RESPONSIVE (MOBILE CARD MODE) ---------- */
+@media (max-width: 640px) {
+  table,
+  thead {
+    display: none;
+  }
+  tbody {
+    display: block;
+  }
+  tr {
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+  }
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+  }
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: var(--text-light-primary);
+  }
+  .dark td::before {
+    color: var(--text-dark-primary);
+  }
+  td[data-label="Permit Title"]::before {
+    display: none;
+  }
+  td[data-label="Permit Title"] {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}

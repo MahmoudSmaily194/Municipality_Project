@@ -53,7 +53,7 @@ try {
                     <div>
                       <p class="news_td_div_p" onclick="viewNews('<?= $news['id'] ?>')">View</p>
                       <p>|</p>  
-                      <p class="news_td_delete_div_p" onclick="deleteNews('<?= $news['id'] ?>')">Delete</p>
+                      <p class="news_td_delete_div_p"><a href="/Municipality/backend/delete_newsItem.php?id=<?php echo $news['id']; ?>">Delete</a></p>
                     </div>
                   </td>
                 </tr>
@@ -90,7 +90,7 @@ try {
           <h3>Upload Image</h3>
           <p>Drag & drop an image here or click to select</p>
           <label for="file">Upload</label>
-          <input name="image" type="file" accept="image/*" hidden id="file" />
+          <input name="imageUpload" type="file" accept="image/*" hidden id="file" />
         </div>
       </div>
 

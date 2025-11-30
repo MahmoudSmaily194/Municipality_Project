@@ -3,9 +3,7 @@ if (!defined('IS_ADMIN_PANEL')) {
     header('Location: /Municipality/admin/login.php');
     exit;
 }
-
 require_once '/xampp/htdocs/Municipality/backend/config/db.php';
-
 try {
     $stmt = $pdo->query("
         SELECT p.id, p.title, p.status, c.name AS category
@@ -65,7 +63,7 @@ try {
                             <div>
                                 <p class="edit_service_btn">Edit</p>
                                 <p>|</p>
-                                <p class="delete_service_btn">Delete</p>
+                                <p class="delete_service_btn"><a href="/Municipality/backend/delete_permit.php?id=<?php echo $permit['id'];?>">Delete</a></p>
                             </div>
                         </td>
                     </tr>

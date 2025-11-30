@@ -1,0 +1,399 @@
+/* -----------------------------
+   GLOBAL PAGE STYLE
+----------------------------- */
+
+body {
+  background: #f5f7fa;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+.permit-details-page {
+  max-width: 1300px;
+  margin-top: 1rem ;
+  padding: 30px;
+  border-inline-start: 2px solid #1a80e5;
+}
+
+/* -----------------------------
+   PAGE HEADER
+----------------------------- */
+
+.page-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 5px;
+  color: #1a80e5;
+}
+
+.page-subtitle {
+  font-size: 15px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* -----------------------------
+   FLEX LAYOUT INSTEAD OF GRID
+----------------------------- */
+
+.permit-grid {
+  display: flex;
+  gap: 25px;
+}
+
+/* Left column (fixed width) */
+.left-column {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Right column (expands) */
+.right-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* -----------------------------
+   CARD STYLE
+----------------------------- */
+
+.card {
+  background: #fff;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+/* -----------------------------
+   SUMMARY + DETAILS
+----------------------------- */
+
+.summary-item,
+.info-row {
+  margin-bottom: 15px;
+}
+.summary-item span{
+  width: 40%;
+}
+.summary-item{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.label {
+  font-size: 13px;
+  color: #777;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.value {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Status + priority badges */
+.status-badge {
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-pending {
+  background: #fff4d6;
+  color: #ad8500;
+}
+
+.status-approved {
+  background: #d7f8e1;
+  color: #1a7f3c;
+}
+
+.priority-high {
+  color: #d33;
+  font-weight: 600;
+}
+
+/* -----------------------------
+   CITIZEN INFORMATION
+----------------------------- */
+
+.citizen-details {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.citizen-avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.citizen-name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.citizen-email,
+.citizen-phone {
+  font-size: 14px;
+  color: #666;
+}
+
+/* -----------------------------
+   REQUIRED DOCUMENTS
+----------------------------- */
+
+.document-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.document-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.document-item:last-child {
+  border-bottom: none;
+}
+
+/* -----------------------------
+   SUBMITTED FILES
+----------------------------- */
+
+.files-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.file-box {
+  background: #f3f4f6;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: 1px solid #e5e7eb;
+}
+
+.file-name {
+  font-weight: 500;
+}
+
+/* -----------------------------
+   UPDATE STATUS FORM
+----------------------------- */
+
+.update-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.form-textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* Upload Box */
+.file-upload-box {
+  border: 2px dashed #cbd5e1;
+  padding: 25px;
+  text-align: center;
+  background: #f8fafc;
+  color: #777;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+/* Save Button */
+.btn-save {
+  background: #2563eb;
+  border: none;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn-save:hover {
+  background: #1e4ecf;
+}
+
+/* -----------------------------
+   REQUEST HISTORY
+----------------------------- */
+
+.history-item {
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-date {
+  font-size: 13px;
+  color: #777;
+}
+
+.history-text {
+  font-size: 14px;
+  margin-top: 3px;
+}
+
+/* -----------------------------
+   RESPONSIVE
+----------------------------- */
+
+@media (max-width: 900px) {
+  .permit-grid {
+    flex-direction: column;
+  }
+
+  .left-column {
+    width: 100%;
+  }
+}
+/* ------------------------------
+   REQUEST HISTORY SECTION
+------------------------------ */
+
+.request-history-card {
+  padding: 22px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border: 1px solid #f0f0f0;
+}
+
+.request-history-card .card-title {
+  font-size: 20px;
+  margin-bottom: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Container for each history row */
+.history-item {
+  position: relative;
+  padding: 18px 18px 18px 40px;
+  margin: 12px 0;
+  background: #fafafa;
+  border-radius: 14px;
+  border: 1px solid #eee;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover effect */
+.history-item:hover {
+  background: #f5faff;
+  border-color: #cde3ff;
+  box-shadow: 0 4px 10px rgba(0, 110, 255, 0.08);
+}
+
+/* Timeline vertical line */
+.request-history-card {
+  position: relative;
+}
+
+.request-history-card::before {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 55px;
+  width: 4px;
+  height: calc(100% - 55px);
+  background: linear-gradient(to bottom, #d0d7e2, #e8edf4);
+  border-radius: 2px;
+}
+
+/* Timeline dot */
+.history-item::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 22px;
+  width: 16px;
+  height: 16px;
+  background: #006eff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(0,110,255,0.2);
+}
+
+/* Date */
+.history-date {
+  font-size: 14px;
+  color: #5a5a5a;
+  margin-bottom: 4px;
+}
+
+/* Main text */
+.history-text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #222;
+  font-weight: 500;
+}
+
+.history-text strong {
+  color: #006eff;
+}
+
+/* Attachment link */
+.history-text a {
+  margin-top: 4px;
+  display: inline-block;
+  font-size: 14px;
+  color: #006eff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.history-text a:hover {
+  text-decoration: underline;
+}

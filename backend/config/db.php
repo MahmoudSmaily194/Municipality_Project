@@ -23,7 +23,7 @@ try {
 //     $email,
 //     $password,
 //     $phone_number = null,
-//     $role = 'admin',
+//     $role = 'citizen',
 //     $profile_photo = null
 // ) {
 //     // Validate email
@@ -83,7 +83,7 @@ try {
 // }
 
 // // Example usage
-// $result = registerUser($pdo, 'John', 'Doe', 'john@example.com', 'password123', '1234567890');
+// $result = registerUser($pdo, 'Mahmoud', 'Smaily', 'mahmoud@example.com', 'password123', '1234567890');
 // echo $result['message'];
 
 
