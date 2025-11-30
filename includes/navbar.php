@@ -1,3 +1,30 @@
+<?php
+require_once '/xampp/htdocs/Municipality/backend/config/db.php'; // PDO connection
+
+// Example user ID (replace with dynamic value)
+$userId =$_SESSION['user_id'] ;
+
+try {
+    // Prepare the SQL query with a placeholder
+    $stmt = $pdo->prepare("
+        SELECT first_name, last_name, email, profile_photo 
+        FROM users 
+        WHERE id = :id
+    ");
+
+    // Bind the ID parameter
+    $stmt->bindParam(':id', $userId, PDO::PARAM_STR);
+
+    // Execute the query
+    $stmt->execute();
+
+    // Fetch the single user
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,22 +43,22 @@
           <div
             class="avatar"
             style="
-              background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDz77nSGGYv8SfAy9WCRU_IYbRilHy5OERpgnoi5en2yFIhL4aNqtsvyHrBqHurhbX59onHFvauc7kDFPYvKQZIfhB3jxO5Ew9cW0wHqPb4ZhXErdOLXUE81FIG6Qv8oY2mqMUxImdY-v6vUaWMpksBtzqxdVT72M_W0O59KDJMKZlVW49XmDwOlbDq6bD0n3U4Z5ryU1yUyNBX64YJlr-5hTYjU2AFl3zxKVcQ4e7OPm5GAxgHOccjnFioAE8sfN6WUgJNgHpsPT8');
+              background-image: url(<?= $user['profile_photo']? $user['profile_photo']:"/Municipality/images/userImg.png" ?>);
             "
           ></div>
           <div class="user-details">
-            <p class="user-name">Citizen Name</p>
-            <p class="user-email">citizen.name@email.com</p>
+            <p class="user-name"><?=  $user['first_name']." ".$user['last_name'] ?></p>
+            <p class="user-email"><?= $user['email'] ?></p>
           </div>
         </div>
 
         <!-- Menu Items -->
         <div class="menu">
-          <a href="#" class="menu-item">
+          <a href="/Municipality/index.php?page=profile" class="menu-item">
             <img src="/Municipality/images/user.svg" />
             <p>Profile</p>
           </a>
-          <a href="#" class="menu-item">
+          <a href="/Municipality/index.php?page=settings" class="menu-item">
             <img src="/Municipality/images/gear.svg" />
             <p>Settings</p>
           </a>
@@ -40,7 +67,7 @@
         <hr class="divider" />
 
         <!-- Logout -->
-        <a href="#" class="menu-item">
+        <a href="/Municipality/admin/logout.php" class="menu-item">
           <img src="/Municipality/images/right-from-bracket.svg" />
           <p>Logout</p>
         </a>
@@ -106,24 +133,20 @@
         }
       }
 
-    function triggerDropdown(){
-    const dropDownWrapper=document.querySelector(".dropdown-wrapper");  
-dropDownWrapper.classList.add("triggerDropDown")
-    } 
-function hideDropdown(){
- const dropDownWrapper=document.querySelector(".dropdown-wrapper");  
-dropDownWrapper.classList.remove("triggerDropDown")
-}
-
-
+      function triggerDropdown() {
+        const dropDownWrapper = document.querySelector(".dropdown-wrapper");
+        dropDownWrapper.classList.add("triggerDropDown");
+      }
+      function hideDropdown() {
+        const dropDownWrapper = document.querySelector(".dropdown-wrapper");
+        dropDownWrapper.classList.remove("triggerDropDown");
+      }
 
       // Run once on load
       renderNavbar();
 
       // Run again on resize
       window.addEventListener("resize", renderNavbar);
-
-     
     </script>
   </body>
 </html>
