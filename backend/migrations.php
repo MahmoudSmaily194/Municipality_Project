@@ -45,7 +45,7 @@ try {
         CREATE TABLE IF NOT EXISTS complaints (
             id CHAR(36) PRIMARY KEY,
             description TEXT,
-            importance_level ENUM('low','medium','high') DEFAULT 'low';
+            importance_level ENUM('low','medium','high') DEFAULT 'low',
             status ENUM('pending', 'in_progress', 'completed', 'rejected') DEFAULT 'pending',
             ai_validation_status ENUM('approved','flagged','rejected') DEFAULT 'approved',
             visibility ENUM('hidden', 'visible') DEFAULT 'visible',
