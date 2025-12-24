@@ -20,6 +20,7 @@ try {
             pr.*,
             CONCAT(u.first_name, ' ', u.last_name) AS applicant_name,
             u.email,
+            u.phone_number,
             p.title AS permit_title,
             p.description AS permit_description,
             c.name AS category_name
@@ -82,7 +83,7 @@ try {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Permit Request Details</title>
-    <link rel="stylesheet" href="/Municipality/css/permitRequestDetails.css?v=2">
+    <link rel="stylesheet" href="/Municipality/css/permitRequestDetails.css?v=4">
   </head>
   <body>
     <div class="permit-details-page">
@@ -110,7 +111,7 @@ try {
 
             <div class="summary-item">
               <span class="label">Status</span>
-              <p class="value status-badge status-<?= strtolower($request['status']) ?>">
+              <p class="value status-badge status-<?=ucfirst($request['status'])?>">
                 <?= ucfirst($request['status']) ?>
               </p>
             </div>
@@ -227,7 +228,7 @@ try {
                 <p class="history-date"><?= $row['updated_at'] ?></p>
                 <p class="history-text">
                   <?= $row['updated_by_name'] ?> updated status to 
-                  <strong><?= ucfirst($row['status']) ?></strong><br>
+                  <strong class="<?= ucfirst($row['status']) ?>"><?= ucfirst($row['status']) ?></strong><br>
                   Note: <?= $row['note'] ?>
                   <?php if ($row['file_url']): ?>
                     <br><a href="<?= $row['file_url'] ?>" download>Download Attachment</a>

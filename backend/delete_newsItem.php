@@ -8,11 +8,11 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 }
 
 // Get news ID
-if (!isset($_GET['id']) || empty($_GET['id'])) {
+if (!isset($_POST['id']) || empty($_POST['id'])) {
     die("News ID is required");
 }
 
-$newsItemId = $_GET['id'];
+$newsItemId = $_POST['id'];
 
 try {
     // 1. Get the image URL to delete the file

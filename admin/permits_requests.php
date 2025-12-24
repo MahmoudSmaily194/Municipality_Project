@@ -29,7 +29,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Permit Requests</title>
-    <link rel="stylesheet" href="/Municipality/css/permits_requests.css?v=3">
+    <link rel="stylesheet" href="/Municipality/css/permits_requests.css?v=5">
 </head>
 <body>
 
@@ -66,7 +66,7 @@ try {
                         <td><?= htmlspecialchars($req['applicant_name']) ?></td>
                         <td><?= htmlspecialchars($req['permit_title']) ?></td>
                         <td><?= htmlspecialchars($req['category']) ?></td>
-                        <td><?= ucfirst($req['status']) ?></td>
+                        <td><p class="<?= ucfirst($req['status'])?>"><?= ucfirst($req['status']) ?></p></td>
                         <td>
                             <div>
                                 <p class="edit_service_btn"><a href="admin.php?page=permitRequestDetails&id=<?php echo($req['id']) ?>">View</a></p>

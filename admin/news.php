@@ -5,6 +5,7 @@ if (!defined('IS_ADMIN_PANEL')) {
 }
 
 require_once '/xampp/htdocs/Municipality/backend/config/db.php';
+ include '/xampp/htdocs/Municipality/includes/delete_modal.php';
 
 try {
     $stmt = $pdo->query("SELECT id, title, created_at, visibility FROM news ORDER BY created_at DESC");
@@ -19,7 +20,9 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/admin_news.css?v=3">
+    <link rel="stylesheet" href="/Municipality/css/admin_news.css?v=2">
+     <link rel="stylesheet" href="/Municipality/css/deleteDialog.css?v=8">
+    <script src="/Municipality/includes/delete_modal.js"></script>
 </head>
 <body>
 
@@ -53,7 +56,7 @@ try {
                     <div>
                       <p class="news_td_div_p" onclick="viewNews('<?= $news['id'] ?>')">View</p>
                       <p>|</p>  
-                      <p class="news_td_delete_div_p"><a href="/Municipality/backend/delete_newsItem.php?id=<?php echo $news['id']; ?>">Delete</a></p>
+                      <p class="news_td_delete_div_p"  onclick="openDeleteModal('/Municipality/backend/delete_newsItem.php', '<?= htmlspecialchars($news['id'], ENT_QUOTES) ?>')">Delete</p>
                     </div>
                   </td>
                 </tr>
@@ -87,6 +90,7 @@ try {
 
       <div class="news_dashboard_uploadPhoto_con">
         <div class="news_upload_image" role="button" tabindex="0">
+          <span class="remove-image" title="Remove image">✖</span>
           <h3>Upload Image</h3>
           <p>Drag & drop an image here or click to select</p>
           <label for="file">Upload</label>
@@ -98,5 +102,49 @@ try {
     </form>
   </div>
 </div>
+<script>
+  const input = document.getElementById("file");
+  const preview = document.querySelector(".news_upload_image");
+  const removeBtn = document.querySelector(".remove-image");
+
+  const title = preview.querySelector("h3");
+  const text = preview.querySelector("p");
+  const label = preview.querySelector("label");
+
+  input.addEventListener("change", function () {
+    const file = this.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function () {
+      preview.style.backgroundImage = `url('${reader.result}')`;
+      preview.style.backgroundSize = "cover";
+      preview.style.backgroundPosition = "center";
+
+      title.style.display = "none";
+      text.style.display = "none";
+      label.style.display = "none";
+
+      removeBtn.style.display = "flex";
+    };
+
+    reader.readAsDataURL(file);
+  });
+
+  removeBtn.addEventListener("click", function (e) {
+    e.stopPropagation(); // مهم
+
+    preview.style.backgroundImage = "none";
+    input.value = "";
+
+    title.style.display = "block";
+    text.style.display = "block";
+    label.style.display = "inline-block";
+
+    removeBtn.style.display = "none";
+  });
+</script>
+
 </body>
 </html>

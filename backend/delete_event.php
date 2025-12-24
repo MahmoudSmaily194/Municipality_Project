@@ -2,17 +2,17 @@
 session_start();
 require_once '/xampp/htdocs/Municipality/backend/config/db.php';
 
-if (!defined('IS_ADMIN_PANEL')) {
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header('Location: /Municipality/admin/login.php');
     exit;
 }
 
 // Get event ID
-if (!isset($_GET['id']) || empty($_GET['id'])) {
+if (!isset($_POST['id']) || empty($_POST['id'])) {
     die("Event ID is required");
 }
 
-$eventId = $_GET['id'];
+$eventId = $_POST['id'];
 
 try {
     // 1. Get the image URL to delete the file

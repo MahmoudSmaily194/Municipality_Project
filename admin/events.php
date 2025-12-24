@@ -10,7 +10,7 @@ if (!defined('IS_ADMIN_PANEL')) {
 }
 
 require_once '/xampp/htdocs/Municipality/backend/config/db.php';
-
+ include '/xampp/htdocs/Municipality/includes/delete_modal.php';
 // Fetch events from database
 try {
     $stmt = $pdo->query("SELECT id, title, date, location FROM events ORDER BY date DESC");
@@ -26,7 +26,9 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events Management</title>
-    <link rel="stylesheet" href="/Municipality/css/admin_events.css?v=4">
+    <link rel="stylesheet" href="/Municipality/css/admin_events.css?v=2">
+    <link rel="stylesheet" href="/Municipality/css/deleteDialog.css?v=3">
+    <script src="/Municipality/includes/delete_modal.js"></script>
 </head>
 <body>
 <div class="events_control_page_con">
@@ -62,7 +64,7 @@ try {
                             <div>
                                 <p class="events_edit_btn">View</p>
                                 <p>|</p>
-                                <p class="events_delete_btn"><a href="/Municipality/backend/delete_event.php?id=<?php echo $event['id']; ?>">Delete</a></p>
+                                <p class="events_delete_btn" onclick="openDeleteModal('/Municipality/backend/delete_event.php', '<?= htmlspecialchars($event['id'], ENT_QUOTES) ?>')">Delete</p>
                             </div>
                         </td>
                     </tr>

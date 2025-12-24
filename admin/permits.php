@@ -4,6 +4,7 @@ if (!defined('IS_ADMIN_PANEL')) {
     exit;
 }
 require_once '/xampp/htdocs/Municipality/backend/config/db.php';
+include '/xampp/htdocs/Municipality/includes/delete_modal.php';
 try {
     $stmt = $pdo->query("
         SELECT p.id, p.title, p.status, c.name AS category
@@ -24,13 +25,15 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/admin_permits.css?v=3">
+    <link rel="stylesheet" href="/Municipality/css/admin_permits.css?v=4">
+    <link rel="stylesheet" href="/Municipality/css/deleteDialog.css?v=3">
+    <script src="/Municipality/includes/delete_modal.js"></script>
 </head>
 <body>
 <div class="ManageServices_page_con">
   <div class="manageServices_page">
     <div class="manageServices_header">
-      <h1>Services Management</h1>
+      <h1>Permits Management</h1>
       <button><a href="admin.php?page=addPermitModel">Add Permit</a></button>
     </div>
 
@@ -58,12 +61,12 @@ try {
                     <tr>
                         <td><?= htmlspecialchars($permit['title']) ?></td>
                         <td><?= htmlspecialchars($permit['category'] ?? 'Uncategorized') ?></td>
-                        <td><?= ucfirst($permit['status']) ?></td>
+                        <td><p class="<?= ucfirst($permit['status']) ?>"><?= ucfirst($permit['status']) ?></p></td>
                         <td>
                             <div>
                                 <p class="edit_service_btn">Edit</p>
                                 <p>|</p>
-                                <p class="delete_service_btn"><a href="/Municipality/backend/delete_permit.php?id=<?php echo $permit['id'];?>">Delete</a></p>
+                                <p class="delete_service_btn" onclick="openDeleteModal('/Municipality/backend/delete_permit.php', '<?= htmlspecialchars($permit['id'], ENT_QUOTES) ?>')">Delete</p>
                             </div>
                         </td>
                     </tr>

@@ -166,3 +166,37 @@ a {
   text-decoration: none !important;
   color: #1a80e5;
 }
+.manageServices_table_con td p {
+  text-align: center;
+  width: 75%;
+  padding: 0.2rem 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.manageServices_table_con td .Pending {
+  color: #ad8500;
+  background: #fff4d6;
+}
+
+.manageServices_table_con td .In_progress {
+  background: #d6f0ff;
+  color: #17a2b8;
+}
+.manageServices_table_con td .Completed {
+  background: #d6f8d6;
+  color: #28a745;
+}
+.manageServices_table_con td .Rejected {
+  background: #f8d6d6;
+  color: #dc3545;
+}
+tr {
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+tr:hover {
+  transform: scale(1.0001);
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}

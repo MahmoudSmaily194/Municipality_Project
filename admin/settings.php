@@ -3,13 +3,21 @@ if (!defined('IS_ADMIN_PANEL')) {
     header('Location: /Municipality/admin/login.php');
     exit;
 }
+
+$errorMessage = $_SESSION['error'] ?? null;
+$successMessage = $_SESSION['success'] ?? null;
+
+// Clear after reading (flash messages)
+unset($_SESSION['error'], $_SESSION['success']);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Settings</title>
-<link rel="stylesheet" href="/Municipality/css/settings.css?v=2">
+<link rel="stylesheet" href="/Municipality/css/settings.css?v=8">
 </head>
 <body>
 <div class="admin_settings_page_con">
@@ -23,14 +31,7 @@ if (!defined('IS_ADMIN_PANEL')) {
         <h3>Admin Information</h3>
 
         <div class="adminProfilePhoto">
-          <div class="adminProfilePhoto_uploade_camera">
-            <label for="file" title="Upload Photo">
-              <i class="fa fa-camera adminProfilePhoto_cameraIcon"></i>
-            </label>
-            <input type="file" accept="image/*" hidden id="file" />
-          </div>
-
-          <img src="Admin.png" alt="Admin" />
+          <img src="/Municipality/images/userImg.png" alt="Admin" />
         </div>
 
         <div>
@@ -87,20 +88,86 @@ if (!defined('IS_ADMIN_PANEL')) {
         </div>
       </div>
     </div>
+    <div class="register-container">
+   <form 
+     id="register-admin-form"
+    action="/Municipality/backend/registerAdmin.php" 
+    method="POST"
+    class="register-form"
+>
+    <h2 class="form-title">Register Admin</h2>
+<?php if ($errorMessage): ?>
+    <p class="form-message error-message">
+        <?= htmlspecialchars($errorMessage) ?>
+    </p>
+<?php endif; ?>
+
+<?php if ($successMessage): ?>
+    <p class="form-message success-message">
+        <?= htmlspecialchars($successMessage) ?>
+    </p>
+<?php endif; ?>
+
+    <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input 
+            type="text" 
+            id="first_name" 
+            name="first_name"
+            class="form-input" 
+            required
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input 
+            type="text" 
+            id="last_name" 
+            name="last_name"
+            class="form-input" 
+            required
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+            type="email" 
+            id="email" 
+            name="email"
+            class="form-input" 
+            required
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="password_hash">Password</label>
+        <input 
+            type="password" 
+            id="password_hash" 
+            name="password_hash"
+            class="form-input" 
+            required
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="phone_number">Phone Number</label>
+        <input 
+            type="tel" 
+            id="phone_number" 
+            name="phone_number"
+            class="form-input" 
+            required
+        >
+    </div>
+
+    <button type="submit" class="form-button">Register</button>
+</form>
+
+</div>
   </div>
 </div>
-
-<!-- Confirmation popup -->
-<!-- <div class="confirm_overlay">
-  <div class="confirm_box">
-    <h3>Are you sure you want to upload this image?</h3>
-    <div class="confirm_buttons">
-      <button>Yes</button>
-      <button>No</button>
-    </div>
-  </div>
-</div> -->
-
-  
 </body>
 </html>

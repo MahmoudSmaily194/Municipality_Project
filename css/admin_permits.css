@@ -166,3 +166,30 @@ a {
   text-decoration: none !important;
   color: #1a80e5;
 }
+
+td .Active {
+  text-align: center;
+  width: 75%;
+  padding: 0.2rem 0;
+  border-radius: 8px;
+  background: #d6f0ff;
+  color: #0a6ebd;
+}
+td .InActive {
+  text-align: center;
+  width: 75%;
+  padding: 0.2rem 0;
+  border-radius: 8px;
+  background: #f0f4f8;
+  color: #7a8b9a;
+}
+tr {
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+tr:hover {
+  transform: scale(1.0001);
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}

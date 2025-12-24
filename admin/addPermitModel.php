@@ -22,7 +22,7 @@ catch (PDOException $e) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/addPermitModel.css?v=5">
+    <link rel="stylesheet" href="/Municipality/css/addPermitModel.css?v=9">
 </head>
 <body>
  <div class="serviceModel_page">
@@ -64,7 +64,7 @@ catch (PDOException $e) {
           </select>
 
           <div class="serviceModel_status_btns">
-            <input id="active" type="radio" name="active" value="active" hidden>
+            <input id="active" type="radio" name="active" value="Active" hidden>
             <label class="event_active activeLabel" for="active">Active</label>
             <input id="inactive" type="radio" name="active" value="inActive" hidden>
             <label class="inActiveLabel" for="inactive">Inactive</label>
@@ -72,6 +72,7 @@ catch (PDOException $e) {
 
           <div class="serviceModel_upload_photo">
             <div class="news_upload_image" role="button" tabindex="0">
+              <span class="remove-image" title="Remove image">✖</span>
           <h3>Upload Image</h3>
           <p>Drag & drop an image here or click to select</p>
           <label for="file">Upload</label>
@@ -171,6 +172,49 @@ function deleteFile(id) {
   renderFiles();
 }
 
-   </script>
+  const input = document.getElementById("file");
+  const preview = document.querySelector(".news_upload_image");
+  const removeBtn = document.querySelector(".remove-image");
+
+  const title = preview.querySelector("h3");
+  const text = preview.querySelector("p");
+  const label = preview.querySelector("label");
+
+  input.addEventListener("change", function () {
+    const file = this.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function () {
+      preview.style.backgroundImage = `url('${reader.result}')`;
+      preview.style.backgroundSize = "cover";
+      preview.style.backgroundPosition = "center";
+
+      title.style.display = "none";
+      text.style.display = "none";
+      label.style.display = "none";
+
+      removeBtn.style.display = "flex";
+    };
+
+    reader.readAsDataURL(file);
+  });
+
+  removeBtn.addEventListener("click", function (e) {
+    e.stopPropagation(); // مهم
+
+    preview.style.backgroundImage = "none";
+    input.value = "";
+
+    title.style.display = "block";
+    text.style.display = "block";
+    label.style.display = "inline-block";
+
+    removeBtn.style.display = "none";
+  });
+</script>
+
+
 </body>
 </html>

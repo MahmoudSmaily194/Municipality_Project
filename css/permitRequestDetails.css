@@ -112,16 +112,25 @@ body {
   display: inline-block;
 }
 
-.status-pending {
-  background: #fff4d6;
-  color: #ad8500;
+.status-Pending {
+  background: #fff4d6; 
+  color: #ad8500;      
 }
 
-.status-approved {
-  background: #d7f8e1;
-  color: #1a7f3c;
+.status-In_progress {
+  background: #d6f0ff; 
+  color: #0a6ebd;      
 }
 
+.status-Completed {
+  background: #d6f8d6; 
+  color: #1a7f3c;      
+}
+
+.status-Rejected {
+  background: #f8d6d6; 
+  color: #dc3545;      
+}
 .priority-high {
   color: #d33;
   font-weight: 600;
@@ -380,10 +389,19 @@ body {
   font-weight: 500;
 }
 
-.history-text strong {
-  color: #006eff;
+.history-text  .Pending {
+   color: #ad8500;
 }
 
+.history-text  .In_progress {
+   color: #17a2b8;
+}
+.history-text  .Completed {
+   color: #28a745;
+}
+.history-text  .Rejected {
+   color: #dc3545;
+}
 /* Attachment link */
 .history-text a {
   margin-top: 4px;
