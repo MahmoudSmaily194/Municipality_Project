@@ -16,7 +16,7 @@ catch (PDOException $e) {
     $issueTypes = [];
     echo "Error: " . $e->getMessage();
 }
-
+include '/xampp/htdocs/Municipality/includes/toast.php';
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +29,7 @@ catch (PDOException $e) {
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   />
   <link rel="stylesheet" href="/Municipality/css/report.css?v=2">
+<link rel="stylesheet" href="/Municipality/css/toast.css?v=2">
   <style>
     /* Quick CSS for layout */
     .loca_btns {
@@ -53,6 +54,7 @@ catch (PDOException $e) {
       margin-top: 1rem;
     }
   </style>
+ <script src="/Municipality/includes/toast.js"></script>
 </head>
 <body>
   <div class="report_page_con">
@@ -67,7 +69,7 @@ catch (PDOException $e) {
               <option value="">Select issue type</option>
                 <?php if (!empty($issueTypes)): ?>
                 <?php foreach ($issueTypes as $issueType): ?>
-                <option value="<?php $issueType['id'] ?> "><?= $issueType['issue_name'] ?></option>
+                <option value="<?= $issueType['id'] ?> "><?= $issueType['issue_name'] ?></option>
                 <?php endforeach ?>
                 <?php endif ?>
             </select>
@@ -139,7 +141,7 @@ catch (PDOException $e) {
     // Use My Location button
     document.getElementById('useLocationBtn').addEventListener('click', () => {
       if (!navigator.geolocation) {
-        alert('Geolocation is not supported by your browser.');
+        openToast('Geolocation is not supported by your browser.',"#fee2e2","#991b1b");
         return;
       }
       navigator.geolocation.getCurrentPosition(
@@ -154,7 +156,7 @@ catch (PDOException $e) {
         },
         (err) => {
           console.error(err);
-          alert('Unable to retrieve your location.');
+          openToast('Unable to retrieve your location.',"#fee2e2","#991b1b");
         }
       );
     });
@@ -162,10 +164,10 @@ catch (PDOException $e) {
     // Save Location button
     document.getElementById('saveLocationBtn').addEventListener('click', () => {
       if (!selectedLocation) {
-        alert('Please select a location first.');
+        openToast('Please select a location first.', "#fee2e2","#991b1b");
         return;
       }
-      alert('Location saved: ' + selectedLocation.join(', '));
+      openToast('Location saved: ' + selectedLocation.join(', ') ,"#22c55e","#ffffff");
     });
 
     // Submit form via AJAX
@@ -173,7 +175,7 @@ catch (PDOException $e) {
       e.preventDefault();
 
       if (!selectedLocation) {
-        alert('Please select a location on the map.');
+        openToast('Please select a location on the map.',"#fee2e2","#991b1b");
         return;
       }
 
@@ -191,17 +193,17 @@ catch (PDOException $e) {
         const result = await response.json();
 
         if (result.success) {
-          alert(result.message);
+          openToast(result.message,"#22c55e","#ffffff");
           form.reset();
           if (marker) map.removeLayer(marker);
           selectedLocation = null;
         } else {
-          alert('Error: ' + result.message);
+          openToast('Error: ' + result.message,"#fee2e2","#991b1b");
         }
 
       } catch (err) {
         console.error(err);
-        alert('An error occurred while submitting the complaint.');
+        openToast('An error occurred while submitting the complaint.',"#fee2e2","#991b1b");
       }
     });
   </script>

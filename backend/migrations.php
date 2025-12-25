@@ -48,7 +48,7 @@ try {
             importance_level ENUM('low','medium','high') DEFAULT 'low',
             status ENUM('pending', 'in_progress', 'completed', 'rejected') DEFAULT 'pending',
             ai_validation_status ENUM('approved','flagged','rejected') DEFAULT 'approved',
-            visibility ENUM('hidden', 'visible') DEFAULT 'visible',
+            visibility ENUM('hidden', 'visible') DEFAULT 'hidden',
             is_seen TINYINT(1) DEFAULT 0,
             issue_id CHAR(36) NULL,
             image_url VARCHAR(255) NULL,

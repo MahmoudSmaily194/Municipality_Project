@@ -17,7 +17,7 @@ unset($_SESSION['error'], $_SESSION['success']);
 <head>
 <meta charset="UTF-8">
 <title>Settings</title>
-<link rel="stylesheet" href="/Municipality/css/settings.css?v=8">
+<link rel="stylesheet" href="/Municipality/css/settings.css?v=9">
 </head>
 <body>
 <div class="admin_settings_page_con">

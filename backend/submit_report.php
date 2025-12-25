@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'] ?? null;
     $latitude = $_POST['latitude'] ?? null;
     $longitude = $_POST['longitude'] ?? null;
-
     if (!$issue_id || !$description || !$latitude || !$longitude) {
         $response['message'] = 'Please fill in all required fields and select a location.';
         echo json_encode($response);
