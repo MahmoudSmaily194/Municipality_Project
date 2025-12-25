@@ -55,6 +55,7 @@
 }
 
 .uploadImg_con {
+  position: relative;
   border: 2px dashed #0078d4;
   border-radius: 8px;
   display: flex;
@@ -181,4 +182,46 @@
   font-size: calc(0.6rem + 0.3vw);
   transition: background-color 0.3s ease;
   margin-bottom: 3rem;
+}
+
+.remove-image {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 30px;
+  height: 30px;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.9);
+  color: #d32f2f;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  border-radius: 50%;
+  cursor: pointer;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+
+  transition: 
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.remove-image:hover {
+  background: #d32f2f;
+  color: #fff;
+
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.remove-image:active {
+  transform: scale(0.95);
 }

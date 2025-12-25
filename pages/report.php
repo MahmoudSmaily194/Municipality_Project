@@ -28,7 +28,7 @@ include '/xampp/htdocs/Municipality/includes/toast.php';
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   />
-  <link rel="stylesheet" href="/Municipality/css/report.css?v=2">
+  <link rel="stylesheet" href="/Municipality/css/report.css?v=8">
 <link rel="stylesheet" href="/Municipality/css/toast.css?v=2">
   <style>
     /* Quick CSS for layout */
@@ -87,6 +87,7 @@ include '/xampp/htdocs/Municipality/includes/toast.php';
 
           <!-- Upload Image -->
           <div class="uploadImg_con">
+            <span class="remove-image" title="Remove image">✖</span>
             <label for="imageUpload">Upload Image</label>
             <input type="file" id="imageUpload" name="imageUpload" accept="image/*" hidden/>
           </div>
@@ -208,7 +209,37 @@ include '/xampp/htdocs/Municipality/includes/toast.php';
     });
   </script>
   <script>
-    
+    const input = document.getElementById("imageUpload");
+  const preview = document.querySelector(".uploadImg_con");
+  const removeBtn = document.querySelector(".remove-image");
+  const label = preview.querySelector("label");
+
+  input.addEventListener("change", function () {
+    const file = this.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function () {
+      preview.style.backgroundImage = `url('${reader.result}')`;
+      preview.style.backgroundSize = "cover";
+      preview.style.backgroundPosition = "center";
+      label.style.display = "none";
+      removeBtn.style.display = "flex";
+    };
+
+    reader.readAsDataURL(file);
+  });
+
+  removeBtn.addEventListener("click", function (e) {
+    e.stopPropagation(); // مهم
+
+    preview.style.backgroundImage = "none";
+    input.value = "";
+    label.style.display = "flex";
+
+    removeBtn.style.display = "none";
+  });
   </script>
 </body>
 </html>
