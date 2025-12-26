@@ -24,41 +24,82 @@ try {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/permits.css?v=4">
+    <link rel="stylesheet" href="/Municipality/css/permits.css" />
+    <link rel="stylesheet" href="/Municipality/css/material-symbols.css" />
+    <link rel="stylesheet" href="/Municipality/css/style.css?v=3" />
   </head>
   <body>
-    <div class="permits_page_con">
-     <div class="permits_page_title"> <h1>Municipality Permits</h1></div>
+    <main class="permits_page_con">
       <div class="permits_page">
-        <div class="permits_page_header">
-          <select>
-            <option value="">All Permits</option>
-            <option value="">Public Works</option>
-            <option value="">Building</option>
-            <option value="">Super Market</option>
-          </select>
-          <div class="permits_page_search_con">
-            <input type="text" placeholder="Search" /><img
-              src="/Municipality/images/magnifying-glass.svg"
-              alt=""
+        <!-- HEADER -->
+        <section class="permits-header">
+          <div class="header-text">
+            <h1>
+              Digital Permits &
+              <span>Licenses</span>
+            </h1>
+            <p>
+              Apply for official building, business, and event permits online.
+              Fast, transparent, and paperless.
+            </p>
+          </div>
+
+          <a href="index.php?page=permits_requests" class="my-permits-btn">
+            <span class="material-symbols-outlined">history_edu</span>
+            My Permit Requests
+          </a>
+        </section>
+
+        <!-- SEARCH + FILTER -->
+        <section class="filters">
+          <div class="search-box">
+            <span class="material-symbols-outlined">search</span>
+            <input
+              type="text"
+              placeholder="Search permits (e.g. Construction)"
             />
           </div>
-         
-        </div>
-         <div class="permits">
-           <?php foreach ($permits as $permit): ?>
-            <div class="permit">
-              <div class="permit_header">
-                <h3><?= htmlspecialchars($permit['title']) ?></h3>
-                <p><?= htmlspecialchars($permit['description']) ?></p>
-                <div><button><a href="/Municipality/index.php?page=applyPermit&id=<?php echo $permit['id'] ?>">Apply Now</a></button>
-                <button>Veiw Details</button></div>
-              </div>
-              <img src="<?= !empty($permit['image_url']) ? htmlspecialchars($permit['image_url']) : '/Municipality/images/empty.jpg' ?>" alt="Event Image">
-            </div>
-            <?php endforeach; ?>
+
+          <div class="select-box">
+            <span class="material-symbols-outlined">filter_list</span>
+            <select>
+              <option>All Categories</option>
+              <option>Building & Construction</option>
+              <option>Business & Trade</option>
+              <option>Events & Public Spaces</option>
+              <option>Infrastructure</option>
+            </select>
           </div>
+
+          <button class="search-btn">Find Permit</button>
+        </section>
+
+        <!-- PERMITS GRID -->
+        <section class="permits-grid">
+          <!-- CARD -->
+         <?php foreach ($permits as $permit): ?>
+          <article class="permit-card">
+            <div
+              class="card-image"
+              style="
+                background-image: url('<?= !empty($permit['image_url']) ? htmlspecialchars($permit['image_url']) : '/Municipality/images/empty.jpg' ?>');
+              "
+            >
+              <h3> <?= htmlspecialchars($permit['title']) ?></h3>
+            </div>
+            <div class="card-body">
+              <p>
+                <?= htmlspecialchars($permit['description']) ?>
+              </p>
+              <div class="card-actions">
+                <button class="primary" ><a href="/Municipality/index.php?page=applyPermit&id=<?php echo $permit['id'] ?>">Apply Now</a></button>
+                <button class="secondary">Details</button>
+              </div>
+            </div>
+          </article>
+        <?php endforeach; ?>
+        </section>
       </div>
-    </div>
+    </main>
   </body>
 </html>

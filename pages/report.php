@@ -29,7 +29,7 @@ include '/xampp/htdocs/Municipality/includes/toast.php';
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   />
   <link rel="stylesheet" href="/Municipality/css/report.css?v=8">
-<link rel="stylesheet" href="/Municipality/css/toast.css?v=2">
+<link rel="stylesheet" href="/Municipality/css/toast.css?v=3">
   <style>
     /* Quick CSS for layout */
     .loca_btns {

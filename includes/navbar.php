@@ -1,3 +1,4 @@
+
 <?php
 require_once '/xampp/htdocs/Municipality/backend/config/db.php'; // PDO connection
 
@@ -23,130 +24,103 @@ try {
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
-?>
 
+$currentPage = $_GET['page'] ?? 'home';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navbar Test</title>
-    <link rel="stylesheet" href="/Municipality/css/navbar.css?v=4" />
-    <link rel="stylesheet" href="/Municipality/css/style.css" />
+    <title>Navbar</title>
+    <link
+      href="/Municipality/css/material-symbols.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/Municipality/css/navbar.css"
+      rel="stylesheet"
+    />
+     <link rel="stylesheet" href="/Municipality/css/style.css?v=2">
   </head>
   <body>
-    <div class="navbar_con"></div>
-    <div class="dropdown-wrapper" onclick="hideDropdown()">
-      <div class="dropdown-box">
-        <!-- User Info Section -->
-        <div class="user-info">
-          <div
-            class="avatar"
-            style="
-              background-image: url(<?= $user['profile_photo']? $user['profile_photo']:"/Municipality/images/userImg.png" ?>);
-            "
-          ></div>
-          <div class="user-details">
-            <p class="user-name"><?=  $user['first_name']." ".$user['last_name'] ?></p>
-            <p class="user-email"><?= $user['email'] ?></p>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <!-- Logo -->
+        <div class="navbar-logo">
+          <div class="logo-icon">
+            <span class="material-symbols-outlined">account_balance</span>
+          </div>
+          <div class="logo-text">
+            <h2>Smart Municipality</h2>
+            <span>CITIZEN PORTAL</span>
           </div>
         </div>
 
-        <!-- Menu Items -->
-        <div class="menu">
-          <a href="/Municipality/index.php?page=profile" class="menu-item">
-            <img src="/Municipality/images/user.svg" />
-            <p>Profile</p>
+        <!-- Menu -->
+        <ul class="navbar-menu">
+        <li>
+          <a href="index.php?page=home"
+            class="<?= ($currentPage === 'home') ? 'active' : '' ?>">
+            Home
           </a>
-          <a href="/Municipality/index.php?page=settings" class="menu-item">
-            <img src="/Municipality/images/gear.svg" />
-            <p>Settings</p>
+        </li>
+
+        <li>
+          <a href="index.php?page=permits"
+            class="<?= ($currentPage === 'permits') ? 'active' : '' ?>">
+            Permits
           </a>
+        </li>
+
+        <li>
+          <a href="index.php?page=news"
+            class="<?= ($currentPage === 'news') ? 'active' : '' ?>">
+            News
+          </a>
+        </li>
+
+        <li>
+          <a href="index.php?page=events"
+            class="<?= ($currentPage === 'events') ? 'active' : '' ?>">
+            Events
+          </a>
+        </li>
+
+        <li>
+          <a href="index.php?page=complaints"
+            class="<?= ($currentPage === 'complaints') ? 'active' : '' ?>">
+            Public Complaints
+          </a>
+        </li>
+
+        <li>
+          <a href="index.php?page=contact"
+            class="<?= ($currentPage === 'contact') ? 'active' : '' ?>">
+            Contact
+          </a>
+        </li>
+      </ul>
+
+        <!-- Right Side -->
+        <div class="navbar-actions">
+          <button class="notification-btn">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="dot"></span>
+          </button>
+
+          <div class="user-info">
+            <div class="user-text">
+              <strong><?= $user['first_name']." ".$user['last_name'] ?></strong>
+              <small>Resident</small>
+            </div>
+            <img
+            src="/Municipality/images/mahmoud.jpg"
+              alt="User"
+            />
+          </div>
         </div>
-
-        <hr class="divider" />
-
-        <!-- Logout -->
-        <a href="/Municipality/admin/logout.php" class="menu-item">
-          <img src="/Municipality/images/right-from-bracket.svg" />
-          <p>Logout</p>
-        </a>
       </div>
-    </div>
-    <script>
-      const navbarContainer = document.querySelector(".navbar_con");
-
-      const navbar = `
-        <div class="logo_con">
-        <img src="/Municipality/images/icon.png" alt="logo" />
-        <h2>Lebanon Municipality  </h2>
-        </div>
-        <img class="menuIcon" src="/Municipality/images/bars.svg" alt="menu icon" />
-        <nav class="navbar">
-        <a href="index.php?page=home">Home</a>
-        <a href="index.php?page=permits">Permits</a>
-        <a href="index.php?page=news">News</a>
-        <a href="index.php?page=events">Events</a>
-        <a href="index.php?page=complaints">Public Complaints</a>
-        <a href="index.php?page=contact">Contact</a>
-        <a href="index.php?page=permits_requests">Permits Requests</a>
-        <img onclick="triggerDropdown()" class="sett" src="/Municipality/uploads/mahmoud.jpg"/>
-        </nav>
-      `;
-
-      const sideBar = `
-        <div class="logo_con">
-        <img src="/Municipality/images/icon.png" alt="logo" />
-        <h2>Lebanon Municipality  </h2>
-        </div>
-        <img class="menuIcon" src="/Municipality/images/bars.svg" alt="menu icon" />
-        <div class="side_navbar_con" id="close">
-          <nav class="side_navbar">
-            <div class="active"><img src="/Municipality/images/house.svg" /><a href="index.php?page=home">Home</a></div>
-            <div><img src="/Municipality/images/landmark.svg" /><a href="index.php?page=about">Services</a></div>
-            <div><img src="/Municipality/images/house.svg" /><a href="index.php?page=news">News</a></div>
-            <div><img src="/Municipality/images/house.svg" /><a href="index.php?page=events">Events</a></div>
-            <div><img src="/Municipality/images/house.svg" /><a href="index.php?page=complaints">Public Complaints</a></div>
-            <div><img src="/Municipality/images/house.svg" /><a href="index.php?page=contact">Contact</a></div>
-          </nav>
-        </div>
-      `;
-
-      function renderNavbar() {
-        // Re-render correct version
-        if (window.innerWidth >= 767) {
-          navbarContainer.innerHTML = navbar;
-        } else {
-          navbarContainer.innerHTML = sideBar;
-        }
-
-        // After rendering, attach the event listener again
-        const menuIcon = document.querySelector(".menuIcon");
-        const mySideNavbar = document.querySelector(".side_navbar_con");
-
-        if (menuIcon && mySideNavbar) {
-          let open = false;
-          menuIcon.addEventListener("click", () => {
-            open = !open;
-            mySideNavbar.id = open ? "open" : "close";
-          });
-        }
-      }
-
-      function triggerDropdown() {
-        const dropDownWrapper = document.querySelector(".dropdown-wrapper");
-        dropDownWrapper.classList.add("triggerDropDown");
-      }
-      function hideDropdown() {
-        const dropDownWrapper = document.querySelector(".dropdown-wrapper");
-        dropDownWrapper.classList.remove("triggerDropDown");
-      }
-
-      // Run once on load
-      renderNavbar();
-
-      // Run again on resize
-      window.addEventListener("resize", renderNavbar);
-    </script>
+    </nav>
   </body>
 </html>

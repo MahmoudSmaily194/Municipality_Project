@@ -13,6 +13,7 @@ try {
 } catch (PDOException $e) {
     die("Error fetching news: " . $e->getMessage());
 }
+include '/xampp/htdocs/Municipality/includes/toast.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +23,9 @@ try {
     <title>Document</title>
     <link rel="stylesheet" href="/Municipality/css/admin_news.css?v=2">
      <link rel="stylesheet" href="/Municipality/css/deleteDialog.css?v=8">
+     <link rel="stylesheet" href="/Municipality/css/toast.css?v=4">
     <script src="/Municipality/includes/delete_modal.js"></script>
+    <script src="/Municipality/includes/toast.js"></script>
 </head>
 <body>
 
@@ -49,7 +52,7 @@ try {
                   <td><?= date('d/m/Y', strtotime($news['created_at'])) ?></td>
                   <td>
                     <button>
-                      <?= $news['visibility'] == 1 ? 'Public' : 'Private' ?>
+                      <?= $news['visibility']?>
                     </button>
                   </td>
                   <td>
@@ -73,7 +76,7 @@ try {
 
   <!-- Add News Form -->
   <div class="AddNews_Con">
-    <form class="AddNews" action="/Municipality/backend/add_news.php" method="post" enctype="multipart/form-data">
+    <form class="AddNews"  enctype="multipart/form-data">
       <h1>Add News</h1>
       <input type="text" name="title" placeholder="Title" required maxlength="150" />
       <textarea placeholder="Description" name="description" required maxlength="1000"></textarea>
@@ -82,8 +85,8 @@ try {
         <p>Visibility</p>
         <div class="form_control">
           <select name="visibility" required>
-            <option value="0">Private</option>
-            <option value="1">Public</option>
+            <option value="Public">Public</option>
+            <option value="Private">Private</option>
           </select>
         </div>
       </div>
@@ -144,6 +147,55 @@ try {
 
     removeBtn.style.display = "none";
   });
+   
+  
+  // =================== submit form ===================================== 
+document.querySelector('.AddNews').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  // Select elements relative to the form
+  const preview = form.querySelector(".news_upload_image");
+  const removeBtn = preview.querySelector(".remove-image");
+  const title = preview.querySelector("h3");
+  const text = preview.querySelector("p");
+  const label = preview.querySelector("label");
+  const input = preview.querySelector('input[type="file"]');
+
+  try {
+    const response = await fetch('/Municipality/backend/add_news.php', {
+      method: 'POST',
+      body: formData
+    });
+    const result = await response.json();
+
+    if (result.success) {
+      openToast(result.message,"#22c55e","#ffffff");
+
+      // Reset text fields
+      form.reset();
+
+      // Reset file input properly
+      const newInput = input.cloneNode();
+      input.parentNode.replaceChild(newInput, input);
+
+      // Reset preview UI
+      preview.style.backgroundImage = "none";
+      title.style.display = "block";
+      text.style.display = "block";
+      label.style.display = "inline-block";
+      removeBtn.style.display = "none";
+    } else {
+      openToast('Error: ' + result.message,"#fee2e2","#991b1b");
+    }
+  } catch (err) {
+    console.error(err);
+    openToast('An error occurred while submitting the news.',"#fee2e2","#991b1b");
+  }
+});
+
+
+
 </script>
 
 </body>

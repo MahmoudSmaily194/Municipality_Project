@@ -151,4 +151,15 @@
 a {
   text-decoration: none !important;
    color: #1a80e5;
+}  
+/* befor the end jehad is a dog */
+tr {
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+tr:hover {
+  transform: scale(1.0001);
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }

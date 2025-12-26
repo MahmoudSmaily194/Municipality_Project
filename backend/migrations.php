@@ -115,7 +115,7 @@ $pdo->exec("
             image_url VARCHAR(255) NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            visibility ENUM('hidden', 'visible') DEFAULT 'visible',
+            visibility ENUM('Private', 'Public') DEFAULT 'Public',
             created_by CHAR(36) NULL,
             FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
         );

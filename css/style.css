@@ -18,10 +18,15 @@
   src: url(/Municipality/fonts/PublicSans-Medium.ttf);
   font-weight: 500;
 }
-body{
-    font-family: "sans";
+@font-face {
+  font-family: "sans";
+  src: url(/Municipality/fonts/PublicSans-Light.ttf);
+  font-weight: 400;
+}
+body {
+  font-family: "sans";
 }
 
-a{
+a {
   text-decoration: none !important;
 }

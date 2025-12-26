@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once '/xampp/htdocs/Municipality/backend/config/db.php';
+header('Content-Type: application/json');
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     if (!isset($_POST['title'], $_POST['eventDate'], $_POST['description'], $_POST['location'])) {
         die("All fields are required");
@@ -11,7 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $location = trim($_POST['location']);
     $createdBy=$_SESSION['user_id'];
     if (empty($title) || empty($eventDate) || empty($description) || empty($location)) {
-        die("All fields must not be empty");
+          echo json_encode([
+        'success' => false,
+        'message' => 'All fields must not be empty'
+    ]);
+    exit;
     }
     
     $imagePath = null;
@@ -31,11 +37,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             if (move_uploaded_file($fileTmpPath, $destPath)) {
                 $imagePath = '/Municipality/uploads/' . $newFileName;
             } else {
-                die('Failed to move uploaded file.');
+                echo json_encode([
+                'success' => false,
+                'message' => 'Failed to move uploaded file.'
+                 ]);
+                exit;
             }
         } else {
-            die('Invalid file type. Only JPG, JPEG, PNG, GIF allowed.');
+            echo json_encode([
+            'success' => false,
+            'message' => 'Invalid file type. Only JPG, JPEG, PNG, GIF allowed.'
+                ]);
+            exit;            
         }
+    }
+    else{
+         echo json_encode([
+            'success' => false,
+            'message' => 'Image was not uploaded'
+                ]);
+            exit;  
     }
 
     // Generate UUID
@@ -58,11 +79,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$id, $title, $slug, $eventDate, $description, $location, $imagePath, $createdBy]);
         if ($stmt->rowCount() > 0) {
-            header("Location: /Municipality/admin.php?page=events");
-            exit;
+                echo json_encode([
+                'success' => true,
+                'message' => 'Event was added sucessfully'
+                 ]);
+                exit;
         }
     } catch (PDOException $e) {
-        die("Error: " . $e->getMessage());
+        echo json_encode([
+        'success' => false,
+        'message' => "Error: " . $e->getMessage()
+        ]);
+        exit;
     }
 }
 ?>

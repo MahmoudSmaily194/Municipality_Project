@@ -29,7 +29,7 @@ $complaints = $stmt->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complaints Management</title>
-    <link rel="stylesheet" href="/Municipality/css/admin_complaints.css">
+    <link rel="stylesheet" href="/Municipality/css/admin_complaints.css?v=4">
 </head>
 <body>
     <div class="ManageComplaints_page_con">
