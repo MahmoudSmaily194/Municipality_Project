@@ -130,3 +130,79 @@ body {
   border-radius: 50%;
   object-fit: cover;
 }
+.menu {
+  display: none;
+  cursor: pointer;
+  font-size: 1.7rem;
+}
+
+/* Navigation */
+.nav {
+  display:none;
+  width: 20rem;
+  position: absolute;
+  top: 5rem;
+  left: -20rem;
+  background-color: rgb(255, 255, 255);
+  border-bottom-right-radius: 10px;
+  transition: left 0.3s ease;
+  z-index: 9999999999;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  color: #111418;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.nav-item:hover {
+  background: #f0f2f4;
+}
+
+.nav-item span {
+  font-weight: 500;
+}
+
+.badge {
+  background: #ef4444;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+
+.active_side {
+  background: rgba(19, 127, 236, 0.1);
+  border-left: 4px solid #137fec;
+  color: #137fec;
+  font-weight: 700;
+}
+
+.fill {
+  font-variation-settings: "FILL" 1;
+}
+.open_nav {
+  left: 0;
+}
+@media (max-width: 890px) {
+  .nav {
+    display: flex;
+    flex-direction: column;
+  }
+  .navbar ul {
+    display: none;
+  }
+  .material-symbols-outlined {
+    display: block;
+  }
+}
+@media (max-width: 490px) {
+  .user-text {
+    display: none;
+  }
+}

@@ -102,6 +102,39 @@ $currentPage = $_GET['page'] ?? 'home';
         </li>
       </ul>
 
+          <!-- Navigation Sidbar -->
+          
+      <nav class="nav custom-scrollbar">
+        <a class="nav-item <?= ($currentPage === 'home') ? 'active_side' : '' ?>" href="index.php?page=home">
+          <span class="material-symbols-outlined">home</span>
+          <span>Home</span>
+        </a>
+
+        <a class="nav-item <?= ($currentPage === 'permits') ? 'active_side' : '' ?>" href="index.php?page=permits">
+          <span class="material-symbols-outlined">description</span>
+          <span>Permits & Licenses</span>
+        </a>
+
+        <a class="nav-item <?= ($currentPage === 'news') ? 'active_side' : '' ?>" href="index.php?page=news">
+          <span class="material-symbols-outlined">newspaper</span>
+          <span>News & Updates</span>
+        </a>
+
+        <a class="nav-item  <?= ($currentPage === 'events') ? 'active_side' : '' ?>" href="index.php?page=events">
+          <span class="material-symbols-outlined">event</span>
+          <span>Community Events</span>
+        </a>
+
+        <a class="nav-item  <?= ($currentPage === 'complaints') ? 'active_side' : '' ?>" href="index.php?page=complaints">
+          <span class="material-symbols-outlined">campaign</span>
+          <span>Public Complaints</span>
+        </a>
+
+        <a class="nav-item  <?= ($currentPage === 'contact') ? 'active_side' : '' ?>" href="index.php?page=contact">
+          <span class="material-symbols-outlined">call</span>
+          <span>Contact Us</span>
+        </a>
+      </nav>
         <!-- Right Side -->
         <div class="navbar-actions">
           <button class="notification-btn">
@@ -119,8 +152,23 @@ $currentPage = $_GET['page'] ?? 'home';
               alt="User"
             />
           </div>
+          <span class="material-symbols-outlined menu">
+                menu
+          </span>
         </div>
       </div>
     </nav>
+    <script>
+      const nav =document.querySelector(".nav");
+      const menu= document.querySelector(".menu");
+      menu.addEventListener("click",()=>{
+        if(nav.classList.contains("open_nav")){
+         nav.classList.remove("open_nav");
+        }
+        else{
+          nav.classList.add("open_nav");
+        }
+      })
+    </script>
   </body>
 </html>

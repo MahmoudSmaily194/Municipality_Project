@@ -29,7 +29,7 @@ $complaints = $stmt->fetchAll();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="/Municipality/h.css">
+  <link rel="stylesheet" href="/Municipality/css/complaints.css">
   <link rel="stylesheet" href="/Municipality/css/material-symbols.css">
 </head>
 <body>
