@@ -20,42 +20,63 @@ try {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/events.css?v=2">
+    <link rel="stylesheet" href="/Municipality/css/events.css" />
+    <link rel="stylesheet" href="/Municipality/css/material-symbols.css" />
+    <link rel="stylesheet" href="/Municipality/css/style.css" />
   </head>
   <body>
-    <div class="events_page_con">
-     <div class="events_page_title"> <h1>Municipality Permits</h1></div>
+    <main class="events_page_con">
       <div class="events_page">
-        <div class="events_page_header">
-          <select>
-            <option value="">All Permits</option>
-            <option value="">Public Works</option>
-            <option value="">Building</option>
-            <option value="">Super Market</option>
-          </select>
-          <div class="events_page_search_con">
-            <input type="text" placeholder="Search" /><img
-              src="/Municipality/images/magnifying-glass.svg"
-              alt=""
-            />
-          </div>
-         
+        <section class="page-header">
+          <h1>Municipal<span>ity Events</span></h1>
+          <p>
+            Discover upcoming municipal activities, public meetings, and
+            community events in your area.
+          </p>
+        </section>
+
+        <div class="search-box">
+          <span class="material-symbols-outlined">search</span>
+          <input type="text" placeholder="Search events..." />
         </div>
-         <div class="events">
-           <?php foreach ($events as $event): ?>
-            <div class="event">
-              <div class="event_header">
-               <div class="event_title"><h3>Title:</h3><h3 class="permit_tile_h"><?php echo htmlspecialchars($event['title']); ?></h3></div> 
-               <div class="event_details"><h3>Details:</h3><p><?php echo htmlspecialchars($event['description']); ?></p></div> 
-                <div class="event_date"><h3>Date:</h3><h4 style="color:#1a80e5"><?php echo date('d/m/Y', strtotime($event['date'])); ?></h4></div>
-             <div class="event_loc"><h3>Location:</h3><h4 class="permit_tile_h"><?php echo htmlspecialchars($event['location']); ?></h4></div>
-                <button>Veiw Details</button>
+
+        <section class="events-grid">
+          <!-- EVENT CARD -->
+             <?php foreach ($events as $event): ?>
+          <article class="event-card">
+            <div
+              class="card-image"
+              style="
+                background-image: url('<?= !empty($event['image_url']) ? htmlspecialchars($event['image_url']) : '/Municipality/images/empty.jpg' ?>');
+              "
+            ></div>
+            <div class="card-content">
+              <h3><?php echo htmlspecialchars($event['title']); ?> </h3>
+              <p>
+                <?php echo htmlspecialchars($event['description']); ?>
+              </p>
+
+              <div class="event-meta">
+                <div>
+                  <span class="material-symbols-outlined">calendar_month</span>
+                  <?php echo date('d/m/Y', strtotime($event['date'])); ?>
+                </div>
+                <div>
+                  <span class="material-symbols-outlined">location_on</span>
+                 <?php echo htmlspecialchars($event['location']); ?>
+                </div>
               </div>
-              <img src="<?= !empty($event['image_url']) ? htmlspecialchars($event['image_url']) : '/Municipality/images/empty.jpg' ?>" alt="Event Image">
+
+              <a href="#" class="details-link">
+                View details
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </a>
             </div>
-             <?php endforeach; ?>
-          </div>
+          </article>
+          <?php endforeach; ?>
+        </section>
       </div>
-    </div>
+    </main>
   </body>
 </html>
+

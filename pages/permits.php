@@ -24,9 +24,9 @@ try {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/permits.css" />
+    <link rel="stylesheet" href="/Municipality/css/permits.css?v=3" />
     <link rel="stylesheet" href="/Municipality/css/material-symbols.css" />
-    <link rel="stylesheet" href="/Municipality/css/style.css?v=3" />
+    <link rel="stylesheet" href="/Municipality/css/style.css" />
   </head>
   <body>
     <main class="permits_page_con">

@@ -18,41 +18,53 @@ try {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/news.css?v=4">
+    <link rel="stylesheet" href="/Municipality/css/news.css?v=3" />
+    <link rel="stylesheet" href="/Municipality/css/style.css" />
+    <link rel="stylesheet" href="/Municipality/css/material-symbols.css" />
   </head>
   <body>
-    <div class="news_page_con">
-     <div class="news_page_title"> <h1>Latest News</h1></div>
+    <main class="news_page_con">
       <div class="news_page">
-        <div class="news_page_header">
-          <select>
-            <option value="">Date</option>
-            <option value="">Today</option>
-            <option value="">YesterDay</option>
-            <option value="">Last Week</option>
-          </select>
-          <div class="news_page_search_con">
-            <input type="text" placeholder="Search" /><img
-              src="/Municipality/images/magnifying-glass.svg"
-              alt=""
-            />
-          </div>
-         
+        <div class="page-header">
+          <h1>Municipal<span>ity News</span></h1>
+          <p>
+            Official announcements and public updates from the municipality.
+          </p>
         </div>
-         <div class="news">
-          <?php foreach ($newsList as $news): ?>
-            <div class="newsItem">
-              <div class="newsItem_header">
-                <h3><?= htmlspecialchars($news['title']) ?></h3>
-                <p><?= htmlspecialchars($news['description']) ?></p>
-                <div>
-                <button>Veiw Details</button></div>
-              </div>
-               <img src="<?= !empty($news['image_url']) ? htmlspecialchars($news['image_url']) : '/Municipality/images/empty.jpg' ?>" alt="Event Image">
-            </div>
-             <?php endforeach; ?>
+
+        <div class="search-wrapper">
+          <div class="search-box">
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" placeholder="Search news..." />
           </div>
+        </div>
+
+        <div class="news-grid">
+             <?php foreach ($newsList as $news): ?>
+          <article class="news-card">
+            <div
+              class="news-image"
+              style="background-image: url('<?= !empty($news['image_url']) ? htmlspecialchars($news['image_url']) : '/Municipality/images/empty.jpg' ?>')"
+            ></div>
+            <div class="news-body">
+              <div class="news-meta">
+                <span class="badge">Public</span>
+                <span class="date">12/10/2023</span>
+              </div>
+              <h3><?= htmlspecialchars($news['title']) ?></h3>
+              <p>
+                <?= htmlspecialchars($news['description']) ?>
+              </p>
+              <a href="#" class="read-more"
+                >Read more
+                <span class="material-symbols-outlined">arrow_forward</span></a
+              >
+            </div>
+          </article>
+           <?php endforeach; ?>
+        </div>
       </div>
-    </div>
+    </main>
   </body>
 </html>
+

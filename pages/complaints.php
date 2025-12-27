@@ -25,44 +25,82 @@ $complaints = $stmt->fetchAll();
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/Municipality/css/complaints.css?v=2">
-  </head>
-  <body>
-    <div class="complaints_page_con">
-     <div class="complaints_page_title"> <h1>Public Complaints</h1> <button><a href="index.php?page=report">Add Complaint</a></button></div>
-      <div class="complaints_page">
-        <div class="complaints_page_header">
-          <select>
-            <option value="">All Permits</option>
-            <option value="">Public Works</option>
-            <option value="">Building</option>
-            <option value="">Super Market</option>
-          </select>
-          <div class="complaints_page_search_con">
-            <input type="text" placeholder="Search" /><img
-              src="/Municipality/images/magnifying-glass.svg"
-              alt=""
-            />
-          </div>
-         
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/Municipality/h.css">
+  <link rel="stylesheet" href="/Municipality/css/material-symbols.css">
+</head>
+<body>
+  <main class="p_complaints_page_con">
+    <div class="p_complaints_page">
+      <!-- Header -->
+      <section class="page-header">
+        <div class="page-header-top">
+          <h1>Public <span>Complaints</span></h1>
+          <button class="add-btn" onclick="window.location.href='index.php?page=report'">
+            <span class="material-symbols-outlined">add</span>
+            Submit New Complaint
+          </button>
         </div>
-         <div class="complaints">
-           <?php foreach($complaints as $complaint): ?>
-            <div class="complaint">
-              <div class="complaint_header">
-               <div class="complaint_title"><h3>Name:</h3><h3 class="permit_tile_h"><?= htmlspecialchars($complaint['first_name']." ". $complaint['last_name']  ?? 'Unknown') ?></h3></div> 
-               <div class="complaint_details"><h3>Details:</h3><?= htmlspecialchars($complaint['description'] ?? 'Unknown') ?></div> 
-                <button>Veiw Details</button>
-              </div>
-              <img src="<?= !empty($complaint['image_url']) ? htmlspecialchars($complaint['image_url']) : '/Municipality/images/empty.jpg' ?>" alt="Complaint Image">
-            </div>
-            <?php endforeach; ?>
-          </div>
+        <p class="description">
+          Reported issues and public concerns submitted by citizens.
+        </p>
+      </section>
+
+      <!-- Search -->
+      <div class="search-box">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input type="text" placeholder="Search complaints..." />
       </div>
-    </div>
-  </body>
+
+      <!-- Complaint Card -->
+          <?php foreach($complaints as $complaint): ?>
+      <article class="complaint-card">
+        <div
+          class="card-image"
+          style="
+            background-image: url('<?= !empty($complaint['image_url']) ? htmlspecialchars($complaint['image_url']) : '/Municipality/images/empty.jpg' ?>');
+          "
+        >
+          <div class="card-date">
+            <span class="material-symbols-outlined" style="font-size: 14px"
+              >calendar_today</span
+            >
+            <?php echo date('d/m/Y', strtotime($complaint['created_at'])); ?>
+          </div>
+        </div>
+
+        <div class="card-content">
+          <div class="card-title">
+            <h3><?= htmlspecialchars($complaint['first_name']." ". $complaint['last_name']  ?? 'Unknown') ?></h3>
+            <span class="status pending"><?= $complaint['status'] ?></span>
+          </div>
+
+          <div class="location">
+            <span class="material-symbols-outlined" style="font-size: 16px"
+              >location_on</span
+            >
+           <?= htmlspecialchars($complaint['issue_type'] )?>
+          </div>
+
+          <p class="description">
+           <?= htmlspecialchars($complaint['description'] ?? 'Unknown') ?>
+          </p>
+
+          <div class="card-actions">
+            <button class="read-btn">
+              Read More
+              <span class="material-symbols-outlined" style="font-size: 18px"
+                >arrow_forward</span
+              >
+            </button>
+          </div>
+        </div>
+      </article>
+      <?php endforeach; ?>
+      </div>
+    </main>
+</body>
 </html>
