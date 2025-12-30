@@ -17,7 +17,13 @@
   gap: 3rem;
 }
 .apply_permit_page > h1 {
-  font-weight: 700;
+  font-size: calc(1.5rem + 1.5vw);
+  font-weight: 800;
+}
+.apply_permit_page > h1 span {
+  background: linear-gradient(90deg, #0a47c2, #3b82f6);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 .permit_overview_con {
   background-color: white;

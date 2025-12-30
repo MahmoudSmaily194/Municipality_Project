@@ -51,7 +51,7 @@ try {
 
     <input type="hidden" name="permit_id" value="<?= $permit_id ?>">
 
-    <h1>Apply for Permit</h1>
+    <h1>Apply for <span>Permit</span></h1>
 
     <!-- Permit Overview -->
     <div class="permit_overview_con">

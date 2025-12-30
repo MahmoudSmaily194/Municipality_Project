@@ -1,245 +1,256 @@
 <?php
 require_once '/xampp/htdocs/Municipality/backend/config/db.php';
-  if (!defined('IS_LOGGEDIN')) {
-      header('Location: /Municipality/admin/login.php');
-      exit;
-  }
-  try{
- $sql1 = $pdo->query("
-        SELECT id,issue_name
-        FROM complaint_issues 
-        ORDER BY created_at DESC
-        ");
-     $issueTypes= $sql1->fetchAll(PDO::FETCH_ASSOC);
+try {
+  $sql = $pdo->query("
+    SELECT id, issue_name
+    FROM complaint_issues
+    ORDER BY created_at DESC
+  ");
+  $issueTypes = $sql->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  $issueTypes = [];
 }
-catch (PDOException $e) {
-    $issueTypes = [];
-    echo "Error: " . $e->getMessage();
-}
+
 include '/xampp/htdocs/Municipality/includes/toast.php';
- ?>
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Report Form</title>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
-  <link rel="stylesheet" href="/Municipality/css/report.css?v=8">
-<link rel="stylesheet" href="/Municipality/css/toast.css?v=3">
-  <style>
-    /* Quick CSS for layout */
-    .loca_btns {
-      display: flex;
-      gap: 1rem;
-      margin-top: 0.5rem;
-    }
-    .mylocation_btn {
-      flex: 1;
-      padding: 0.5rem;
-      cursor: pointer;
-    }
-    .submit_btn {
-      margin-top: 1rem;
-      padding: 0.7rem;
-      width: 100%;
-      cursor: pointer;
-    }
-    #map {
-      width: 100%;
-      height: 300px;
-      margin-top: 1rem;
-    }
-  </style>
- <script src="/Municipality/includes/toast.js"></script>
+  <title>Report Form - Smart Municipality</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/Municipality/css/report.css">
+  <link rel="stylesheet" href="/Municipality/css/toast.css">
+
+  <script src="/Municipality/includes/toast.js"></script>
 </head>
+
 <body>
-  <div class="report_page_con">
-    <div class="report_page">
-      <h1>Report Form</h1>
-      <div class="report_form">
-        <form id="reportForm">
-          <!-- Issue Type -->
-          <label for="issueType">Issue Type</label>
-          <div class="form-control">
-            <select id="issueType" name="issueType" required>
-              <option value="">Select issue type</option>
-                <?php if (!empty($issueTypes)): ?>
-                <?php foreach ($issueTypes as $issueType): ?>
-                <option value="<?= $issueType['id'] ?> "><?= $issueType['issue_name'] ?></option>
-                <?php endforeach ?>
-                <?php endif ?>
+<div class="app">
+
+  <main class="container">
+    <section class="card">
+
+      <!-- Header -->
+      <header class="card-header">
+        <h1>Report <span>Form</span></h1>
+        <p>Submit a new request to the municipality to improve our city.</p>
+      </header>
+
+      <form id="reportForm" class="card-body">
+
+        <!-- Issue Type -->
+        <div class="form-group">
+          <label>Issue Type</label>
+          <div class="select-wrapper">
+            <select name="issueType" required>
+              <option value="" disabled selected>Select an issue type</option>
+              <?php foreach ($issueTypes as $issue): ?>
+                <option value="<?= $issue['id'] ?>">
+                  <?= htmlspecialchars($issue['issue_name']) ?>
+                </option>
+              <?php endforeach; ?>
             </select>
+            <span class="material-symbols-outlined">expand_more</span>
           </div>
+        </div>
 
-          <!-- Description -->
-          <label for="description">Description</label>
+        <!-- Description -->
+        <div class="form-group">
+          <label>Description</label>
           <textarea
-            id="description"
             name="description"
-            placeholder="Describe your complaint..."
+            placeholder="Describe your complaint in detail..."
             maxlength="1000"
-            required
-          ></textarea>
+            required></textarea>
+        </div>
 
-          <!-- Upload Image -->
-          <div class="uploadImg_con">
-            <span class="remove-image" title="Remove image">✖</span>
-            <label for="imageUpload">Upload Image</label>
-            <input type="file" id="imageUpload" name="imageUpload" accept="image/*" hidden/>
-          </div>
+        <!-- Upload -->
+        <div class="form-group">
+          <label>Upload Image <span>(optional)</span></label>
 
-          <!-- Location Selector Map -->
-          <div class="location_selector">
-            <div id="map"></div>
-            <div class="loca_btns">
-              <button type="button" id="useLocationBtn" class="mylocation_btn">Use My Location</button>
-              <button type="button" id="saveLocationBtn" class="mylocation_btn">Save Location</button>
+          <div class="upload-box uploadImg_con">
+            <input type="file" id="imageUpload" name="imageUpload" accept="image/*" />
+            <span class="remove-image">✖</span>
+
+            <div class="upload-content">
+              <label for="imageUpload" class="material-symbols-outlined upload-icon">cloud_upload</label>
+              <p class="upload-title">Click to upload or drag and drop</p>
+              <p class="upload-hint">PNG, JPG up to 5MB</p>
             </div>
           </div>
+        </div>
 
-          <!-- Submit Button -->
-          <button class="submit_btn" type="submit">Submit</button>
-        </form>
-      </div>
-    </div>
-  </div>
+        <!-- Location -->
+        <div class="form-group">
+          <label>Location</label>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script>
-    // Initialize map
-    const map = L.map('map').setView([33.6863, 35.909], 13);
+          <div id="map" class="map"></div>
 
-    // Add OpenStreetMap tiles
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+          <div class="map-buttons">
+            <button type="button" id="useLocationBtn" class="primary-soft">
+              <span class="material-symbols-outlined">my_location</span>
+              Use My Location
+            </button>
+            <button type="button" id="saveLocationBtn" class="secondary">
+              <span class="material-symbols-outlined">bookmark</span>
+              Save Location
+            </button>
+          </div>
+        </div>
 
-    // Fix default marker icon
-    delete L.Icon.Default.prototype._getIconUrl;
-    L.Icon.Default.mergeOptions({
-      iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-      iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-    });
+        <!-- Submit -->
+        <footer class="card-footer">
+          <button class="submit" type="submit">
+            Submit Report
+            <span class="material-symbols-outlined">send</span>
+          </button>
 
-    let marker = null;
-    let selectedLocation = null;
+          <p class="legal">
+            By submitting, you agree to the
+            <a href="#">Terms of Service</a> and
+            <a href="#">Privacy Policy</a>.
+          </p>
+        </footer>
 
-    // Click on map to set marker
-    map.on('click', function(e) {
-      selectedLocation = [e.latlng.lat, e.latlng.lng];
-      if (marker) {
-        marker.setLatLng(selectedLocation);
-      } else {
-        marker = L.marker(selectedLocation).addTo(map);
-      }
-    });
+      </form>
+    </section>
+  </main>
 
-    // Use My Location button
-    document.getElementById('useLocationBtn').addEventListener('click', () => {
-      if (!navigator.geolocation) {
-        openToast('Geolocation is not supported by your browser.',"#fee2e2","#991b1b");
-        return;
-      }
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          selectedLocation = [position.coords.latitude, position.coords.longitude];
-          map.setView(selectedLocation, 13);
-          if (marker) {
-            marker.setLatLng(selectedLocation);
-          } else {
-            marker = L.marker(selectedLocation).addTo(map);
-          }
-        },
-        (err) => {
-          console.error(err);
-          openToast('Unable to retrieve your location.',"#fee2e2","#991b1b");
-        }
-      );
-    });
+</div>
 
-    // Save Location button
-    document.getElementById('saveLocationBtn').addEventListener('click', () => {
-      if (!selectedLocation) {
-        openToast('Please select a location first.', "#fee2e2","#991b1b");
-        return;
-      }
-      openToast('Location saved: ' + selectedLocation.join(', ') ,"#22c55e","#ffffff");
-    });
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    // Submit form via AJAX
-    document.getElementById('reportForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
+<script>
+/* =======================
+   MAP LOGIC
+======================= */
+const map = L.map('map').setView([33.6863, 35.909], 13);
 
-      if (!selectedLocation) {
-        openToast('Please select a location on the map.',"#fee2e2","#991b1b");
-        return;
-      }
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
 
-      const form = e.target;
-      const formData = new FormData(form);
-      formData.append('latitude', selectedLocation[0]);
-      formData.append('longitude', selectedLocation[1]);
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+});
 
-      try {
-        const response = await fetch('/Municipality/backend/submit_report.php', {
-          method: 'POST',
-          body: formData
-        });
+let marker = null;
+let selectedLocation = null;
 
-        const result = await response.json();
+map.on('click', e => {
+  selectedLocation = [e.latlng.lat, e.latlng.lng];
+  if (marker) marker.setLatLng(selectedLocation);
+  else marker = L.marker(selectedLocation).addTo(map);
+});
 
-        if (result.success) {
-          openToast(result.message,"#22c55e","#ffffff");
-          form.reset();
-          if (marker) map.removeLayer(marker);
-          selectedLocation = null;
-        } else {
-          openToast('Error: ' + result.message,"#fee2e2","#991b1b");
-        }
+document.getElementById('useLocationBtn').onclick = () => {
+  navigator.geolocation.getCurrentPosition(pos => {
+    selectedLocation = [pos.coords.latitude, pos.coords.longitude];
+    map.setView(selectedLocation, 13);
+    if (marker) marker.setLatLng(selectedLocation);
+    else marker = L.marker(selectedLocation).addTo(map);
+  });
+};
 
-      } catch (err) {
-        console.error(err);
-        openToast('An error occurred while submitting the complaint.',"#fee2e2","#991b1b");
-      }
-    });
-  </script>
-  <script>
-    const input = document.getElementById("imageUpload");
-  const preview = document.querySelector(".uploadImg_con");
-  const removeBtn = document.querySelector(".remove-image");
-  const label = preview.querySelector("label");
+document.getElementById('saveLocationBtn').onclick = () => {
+  if (!selectedLocation) {
+    openToast('Please select a location first.', '#fee2e2', '#991b1b');
+    return;
+  }
+  openToast('Location saved successfully.', '#22c55e', '#ffffff');
+};
 
-  input.addEventListener("change", function () {
-    const file = this.files[0];
-    if (!file) return;
+/* =======================
+   IMAGE PREVIEW
+======================= */
+const input = document.getElementById("imageUpload");
+const preview = document.querySelector(".uploadImg_con");
+const removeBtn = document.querySelector(".remove-image");
+const uploadIcon = document.querySelector(".upload-icon");
+const uploadTitle = document.querySelector(".upload-title");
+const uploadHint = document.querySelector(".upload-hint");
 
-    const reader = new FileReader();
+input.addEventListener("change", function () {
+  const file = this.files[0];
+  if (!file) return;
 
-    reader.onload = function () {
-      preview.style.backgroundImage = `url('${reader.result}')`;
-      preview.style.backgroundSize = "cover";
-      preview.style.backgroundPosition = "center";
-      label.style.display = "none";
-      removeBtn.style.display = "flex";
-    };
+  const reader = new FileReader();
+  reader.onload = () => {
+    preview.style.backgroundImage = `url('${reader.result}')`;
+    preview.classList.add("has-image");
+    removeBtn.style.display = "flex";
+    uploadIcon.style.display="none";
+    uploadTitle.style.display="none";
+    uploadHint.style.display="none";
+  };
+  reader.readAsDataURL(file);
+});
 
-    reader.readAsDataURL(file);
+removeBtn.onclick = e => {
+  e.stopPropagation();
+  preview.style.backgroundImage = "none";
+  preview.classList.remove("has-image");
+  input.value = "";
+  removeBtn.style.display = "none";
+  uploadIcon.style.display="inline-block";
+  uploadTitle.style.display="block";
+  uploadHint.style.display="block";
+};
+
+/* =======================
+   FORM SUBMIT
+======================= */
+document.getElementById('reportForm').addEventListener('submit', async e => {
+  e.preventDefault();
+
+  if (!selectedLocation) {
+    openToast('Please select a location.', '#fee2e2', '#991b1b');
+    return;
+  }
+
+  const formData = new FormData(e.target);
+  formData.append('latitude', selectedLocation[0]);
+  formData.append('longitude', selectedLocation[1]);
+
+  const res = await fetch('/Municipality/backend/submit_report.php', {
+    method: 'POST',
+    body: formData
   });
 
-  removeBtn.addEventListener("click", function (e) {
-    e.stopPropagation(); // مهم
+  const result = await res.json();
 
+  if (result.success) {
+    openToast(result.message, '#22c55e', '#ffffff');
+    e.target.reset();
     preview.style.backgroundImage = "none";
+    preview.classList.remove("has-image");
     input.value = "";
-    label.style.display = "flex";
-
     removeBtn.style.display = "none";
-  });
-  </script>
+    uploadIcon.style.display="inline-block";
+    uploadTitle.style.display="block";
+    uploadHint.style.display="block";
+    if (marker) map.removeLayer(marker);
+    selectedLocation = null;
+  } else {
+    openToast(result.message, '#fee2e2', '#991b1b');
+  }
+});
+
+</script>
+
 </body>
 </html>

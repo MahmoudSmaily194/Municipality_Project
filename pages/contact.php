@@ -15,11 +15,7 @@
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   />
-
   <style>
-  
-
-  
   </style>
   </head>
   <body>
@@ -27,7 +23,7 @@
       <div class="contact_page">
         <div class="contact_page_sec1">
           <div class="contact_page_header">
-            <h1>Contact Us</h1>
+            <h1>Contact <span>Us</span></h1>
             <p>
               We're here to help. Reach out to us with any questions or
               concerns.
