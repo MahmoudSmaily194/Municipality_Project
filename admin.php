@@ -12,7 +12,7 @@ if(!$loggedin || $role != "admin"){
 define('IS_ADMIN_PANEL', true);
 // Determine which page to include
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
-$allowed_pages = ['dashboard', 'news', 'events', 'permits','permits_requests','permitRequestDetails', 'complaints', 'settings','addEventModel','addPermitModel',"addPermitCateg","addIssueType"];
+$allowed_pages = ['dashboard', 'news', 'events', 'permits','permits_requests','permitRequestDetails', 'complaints', 'settings','addEventModel','addPermitModel',"addPermitCateg","addIssueType","complaintDetails"];
 
 if (!in_array($page, $allowed_pages)) {
     $page = 'dashboard';

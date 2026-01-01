@@ -64,7 +64,7 @@ $complaints = $stmt->fetchAll();
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="ManageCompliants_div_viewBtn">
+                                        <div class="ManageCompliants_div_viewBtn" onclick="window.location.href='admin.php?page=complaintDetails&id=<?= urlencode($complaint['id']) ?>'">
                                             <p>View</p>
                                         </div>
                                     </td>

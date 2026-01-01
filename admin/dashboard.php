@@ -135,7 +135,7 @@ document.querySelectorAll('.notific').forEach(item => {
      item.remove();
       // Redirect based on type
       if (type === 'complaint') {
-        window.location.href = `/Municipality/admin.php?page=complaints`;
+        window.location.href = `admin.php?page=complaintDetails&id=<?= urlencode($complaint['id']) ?>`;
       } else {
         
         window.location.href = `/Municipality/admin.php?page=permitRequestDetails&id=${id}`;

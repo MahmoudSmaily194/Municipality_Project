@@ -136,10 +136,10 @@ body {
 
 /* CARDS */
 .card {
-  background: var(--surface);
+  background:  #ffffff;
   padding: 20px;
   border-radius: 14px;
-  border: 1px solid var(--border);
+  border: 1px solid #e5e7eb;
   margin-bottom: 20px;
 }
 
