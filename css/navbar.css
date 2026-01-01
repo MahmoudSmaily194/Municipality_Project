@@ -129,6 +129,11 @@ body {
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+.user-info img:hover {
+  transform: scale(1.1);
 }
 .navbar-actions .menu {
   display: none;
@@ -208,4 +213,121 @@ body {
   .user-text {
     display: none;
   }
+}
+.profile-dropdown-wrap {
+  display: none;
+  position: absolute;
+  top: 0rem;
+  right: 0;
+  z-index: 999999;
+  width: 100%;
+  height: 100%;
+  justify-content: end;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.dropdown-container {
+  position: absolute;
+  top: 6.5rem;
+  right: 3rem;
+  width: 320px;
+  background-color: white;
+  border-radius: 0.75rem; /* xl */
+  padding: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+   z-index: 9999999;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.user-text p:first-child {
+  text-align: start;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #111418;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-text p:last-child {
+  text-align: start;
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: #617589;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.5rem; /* lg */
+  font-size: 1rem;
+  color: #111418;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.menu-item span {
+  font-family: "Material Symbols Outlined";
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-size: 20px;
+  color: #617589;
+}
+
+.menu-item:hover {
+  background-color: rgba(19, 127, 236, 0.1);
+}
+
+.divider {
+  margin: 0.5rem 0;
+  border-top: 1px solid #e5e7eb; /* gray-200 */
+}
+
+/* Dark mode */
+body.dark {
+  background-color: #101922;
+}
+
+body.dark .dropdown-container {
+  background-color: #101922;
+  border: 1px solid #27272a;
+  color: white;
+}
+
+body.dark .user-text p:first-child {
+  color: white;
+}
+
+body.dark .user-text p:last-child {
+  color: #a1a1aa; /* zinc-400 */
+}
+
+body.dark .menu-item span {
+  color: #a1a1aa;
+}
+
+body.dark .menu-item:hover {
+  background-color: rgba(19, 127, 236, 0.2);
+}
+.open-dropdown{
+  display: flex;
 }

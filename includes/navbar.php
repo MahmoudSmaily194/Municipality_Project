@@ -32,13 +32,13 @@ $currentPage = $_GET['page'] ?? 'home';
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Navbar</title>
+    <title>Smart Municipality</title>
     <link
       href="/Municipality/css/material-symbols.css"
       rel="stylesheet"
     />
     <link
-      href="/Municipality/css/navbar.css"
+      href="/Municipality/css/navbar.css?v=2"
       rel="stylesheet"
     />
      <link rel="stylesheet" href="/Municipality/css/style.css?v=2">
@@ -148,7 +148,8 @@ $currentPage = $_GET['page'] ?? 'home';
               <small>Resident</small>
             </div>
             <img
-            src="/Municipality/images/mahmoud.jpg"
+            id="avatarImg"
+            src="/Municipality/images/userImg.png"
               alt="User"
             />
           </div>
@@ -158,6 +159,41 @@ $currentPage = $_GET['page'] ?? 'home';
         </div>
       </div>
     </nav>
+    <div class="profile-dropdown-wrap">
+      <div class="dropdown-container">
+          <!-- User Info Section -->
+          <div class="profile-info">
+              <div class="avatar" style="background-image: url('/Municipality/images/userImg.png');"></div>
+              <div class="user-text">
+                  <p><?= $user['first_name']." ".$user['last_name'] ?></p>
+                  <p><?= $user['email'] ?></p>
+              </div>
+          </div>
+
+          <!-- Menu Items -->
+          <a href="#" class="menu-item">
+              <span>person</span>
+              <p>Profile</p>
+          </a>
+          <a href="#" class="menu-item">
+              <span>settings</span>
+              <p>Settings</p>
+          </a>
+          <a href="#" class="menu-item">
+              <span>description</span>
+              <p>My Requests</p>
+          </a>
+
+          <!-- Divider -->
+          <div class="divider"></div>
+
+          <!-- Logout -->
+          <a href="/Municipality/admin/logout.php" class="menu-item">
+              <span>logout</span>
+              <p>Logout</p>
+          </a>
+      </div>
+  </div>
     <script>
       const nav =document.querySelector(".nav");
       const menu= document.querySelector(".menu");
@@ -169,6 +205,23 @@ $currentPage = $_GET['page'] ?? 'home';
           nav.classList.add("open_nav");
         }
       })
+    </script>
+    <script>
+      const profileDropdownWrapper=document.querySelector(".profile-dropdown-wrap");
+      const avatar=document.getElementById("avatarImg");
+      avatar.addEventListener("click",()=>{
+        if(profileDropdownWrapper.classList.contains("open-dropdown")){
+          profileDropdownWrapper.classList.remove("open-dropdown");
+        }
+        else{
+          profileDropdownWrapper.classList.add("open-dropdown");
+        }
+      });
+           profileDropdownWrapper.addEventListener("click",()=>{
+        if(profileDropdownWrapper.classList.contains("open-dropdown")){
+          profileDropdownWrapper.classList.remove("open-dropdown");
+        }
+      });
     </script>
   </body>
 </html>

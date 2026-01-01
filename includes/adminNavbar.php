@@ -7,7 +7,7 @@ $current_page = $_GET['page'] ?? 'dashboard';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>admin navbar</title>
+  <title>Admin Panel</title>
   <link rel="stylesheet" href="/Municipality/css/adminNavbar.css?v=4">
   <link rel="stylesheet" href="/Municipality/css/style.css?v=2">
 </head>
@@ -16,7 +16,7 @@ $current_page = $_GET['page'] ?? 'dashboard';
     <div class="admin_sideBar">
       <div class="admin_logo_con">
         <img src="/Municipality/images/icon.png" alt="logo" />
-        <h2>Lebanon Municipality</h2>
+        <h2>Smart Municipality</h2>
       </div>
       <nav class="admin_side_navbar">
 
