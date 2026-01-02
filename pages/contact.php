@@ -1,9 +1,10 @@
 <?php
-  if (!defined('IS_LOGGEDIN')) {
-      header('Location: /Municipality/admin/login.php');
-      exit;
-  }
- ?>
+if (!defined('IS_LOGGEDIN')) {
+  header('Location: /Municipality/admin/login.php');
+  exit();
+}
+include '/xampp/htdocs/Municipality/includes/toast.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,8 +16,8 @@
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   />
-  <style>
-  </style>
+      <link rel="stylesheet" href="/Municipality/css/toast.css?v=4">
+      <script src="/Municipality/includes/toast.js"></script>
   </head>
   <body>
     <div class="contact_page_con">
@@ -128,9 +129,10 @@
    <div class="contact_form">
         <h2>Contact Us</h2>
 
-        <form>
+        <form id="contactForm" method="post" action="/Municipality/backend/send_contact.php">
           <label for="name">Full Name</label>
           <input
+            name="name"
             id="name"
             type="text"
             placeholder="Enter your full name"
@@ -138,16 +140,9 @@
             maxLength="100"
           />
 
-          <label for="email">Email Address</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="Enter your email address"
-            maxLength="60"
-          />
-
           <label for="subject">Subject</label>
           <input
+            name="subject"
             id="subject"
             type="text"
             placeholder="Subject of your message"
@@ -157,17 +152,20 @@
 
           <label for="body">Message</label>
           <textarea
+            name="message"
             id="body"
             placeholder="Write your message here..."
             required
             maxLength="2000"
           ></textarea>
 
-          <button type="submit">Send Message</button>
+          <button id="submitBtn" type="submit">Send Message</button>
         </form>
+              <div id="loader" class="loader" style="display:none;"></div>
       </div>
       </div>
     </div>
+
      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <script>
@@ -192,6 +190,45 @@
       window.open(url, "_blank");
     }
   </script>
+  <script>
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const form = this;
+    const formData = new FormData(form);
+    const loader = document.getElementById('loader');
+    const submitBtn = document.getElementById('submitBtn');
+
+    // Show loader & disable button
+    loader.style.display = 'block';
+    submitBtn.disabled = true;
+
+
+    fetch('/Municipality/backend/send_contact.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        // Show response message
+        openToast(data.message,"#22c55e","#ffffff");
+        if (data.status === 'success') {
+            form.reset();
+            openToast(data.message,"#22c55e","#ffffff")
+        }else{
+                  openToast(data.message,"#fee2e2","#991b1b");
+        }
+    })
+    .catch(() => {
+        openToast("Something went wrong","#fee2e2","#991b1b");
+    })
+    .finally(() => {
+        // Always hide loader & enable button
+        loader.style.display = 'none';
+        submitBtn.disabled = false;
+    });
+});
+</script>
 
   </body>
 </html>
