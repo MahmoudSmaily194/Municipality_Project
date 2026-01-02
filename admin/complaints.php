@@ -1,9 +1,10 @@
+
 <?php
 require_once '/xampp/htdocs/Municipality/backend/config/db.php';
-
+include '/xampp/htdocs/Municipality/includes/loader.php';
 if (!defined('IS_ADMIN_PANEL')) {
-    header('Location: /Municipality/admin/login.php');
-    exit;
+  header('Location: /Municipality/admin/login.php');
+  exit();
 }
 
 // Fetch all complaints
@@ -30,6 +31,8 @@ $complaints = $stmt->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complaints Management</title>
     <link rel="stylesheet" href="/Municipality/css/admin_complaints.css?v=4">
+    <link rel="stylesheet" href="/Municipality/css/loader.css">
+<script src="/Municipality/includes/loader.js"></script>
 </head>
 <body>
     <div class="ManageComplaints_page_con">
@@ -53,19 +56,27 @@ $complaints = $stmt->fetchAll();
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($complaints as $complaint): ?>
+                            <?php foreach ($complaints as $complaint): ?>
                                 <tr>
-                                    <td style="color: black;"><?= htmlspecialchars($complaint['user_name'] ?? 'Unknown') ?></td>
-                                    <td><?= htmlspecialchars(date('Y-m-d', strtotime($complaint['created_at']))) ?></td>
-                                    <td><?= htmlspecialchars($complaint['issue_type'] ?? 'N/A') ?></td>
+                                    <td style="color: black;"><?= htmlspecialchars(
+                                      $complaint['user_name'] ?? 'Unknown',
+                                    ) ?></td>
+                                    <td><?= htmlspecialchars(
+                                      date('Y-m-d', strtotime($complaint['created_at'])),
+                                    ) ?></td>
+                                    <td><?= htmlspecialchars(
+                                      $complaint['issue_type'] ?? 'N/A',
+                                    ) ?></td>
                                     <td>
                                         <div>
-                                            <p><?= ucfirst(str_replace('_', ' ', $complaint['status'])) ?></p>
+                                            <p><?= ucfirst(
+                                              str_replace('_', ' ', $complaint['status']),
+                                            ) ?></p>
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="ManageCompliants_div_viewBtn" onclick="window.location.href='admin.php?page=complaintDetails&id=<?= urlencode($complaint['id']) ?>'">
-                                            <p>View</p>
+                                        <div class="ManageCompliants_div_viewBtn" data-href="">
+                                            <a href="admin.php?page=complaintDetails&id=<?= urlencode($complaint['id']) ?>">View</a>
                                         </div>
                                     </td>
                                 </tr>

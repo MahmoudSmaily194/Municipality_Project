@@ -36,11 +36,11 @@
     <div class="quick_access_con">
     <div class="quick_access_con_title"><h1>Quick Access</h1></div>
     <div class="quick_access">
-      <div>
+      <div style="cursor:pointer;">
         <img src="/Municipality/images/payBell.png" alt="payBell" />
         <p>Pay Bills</p>
       </div>
-      <div>
+      <div onclick="window.location.href='/Municipality/index.php?page=permits';" style="cursor:pointer;">
         <img src="/Municipality/images/permits.png" alt="permits" />
         <p>Apply for Permits</p>
       </div>
@@ -49,7 +49,7 @@
         <img src="/Municipality/images/trash.png" alt="trash" />
         <p>Trash Schedule</p>
       </div>
-      <div>
+      <div onclick="window.location.href='/Municipality/index.php?page=report';" style="cursor:pointer;">
         <img src="/Municipality/images/report.png" alt="report" />
         <p>Report a Problem</p>
       </div>

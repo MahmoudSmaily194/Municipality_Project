@@ -1,23 +1,62 @@
 <?php
-  if (!defined('IS_LOGGEDIN')) {
-      header('Location: /Municipality/admin/login.php');
-      exit;
-  }
+if (!defined('IS_LOGGEDIN')) {
+    header('Location: /Municipality/admin/login.php');
+    exit;
+}
+
 require_once '/xampp/htdocs/Municipality/backend/config/db.php';
+
+// Get search and category filter from GET
+$search = $_GET['q'] ?? '';
+$categoryFilter = $_GET['category'] ?? '';
+
 try {
-    $stmt = $pdo->query("
-        SELECT p.id, p.title, p.status,p.description,p.image_url, c.name AS category
+    // Build dynamic WHERE conditions
+    $conditions = [];
+    $params = [];
+
+    if (!empty($search)) {
+        // Search in title and description
+        $conditions[] = "(p.title LIKE :search OR p.description LIKE :search)";
+        $params[':search'] = "%$search%";
+    }
+
+    if (!empty($categoryFilter)) {
+        // Filter by category
+        $conditions[] = "c.name = :category";
+        $params[':category'] = $categoryFilter;
+    }
+
+    $where = '';
+    if (!empty($conditions)) {
+        $where = 'WHERE ' . implode(' AND ', $conditions);
+    }
+
+    // Prepare and execute the query
+    $stmt = $pdo->prepare("
+        SELECT p.id, p.title, p.status, p.description, p.image_url, c.name AS category
         FROM permits p
         LEFT JOIN permits_categories c ON p.category_id = c.id
+        $where
         ORDER BY p.created_at DESC
     ");
+    $stmt->execute($params);
     $permits = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
     $permits = [];
-   
     echo "Error: " . $e->getMessage();
 }
- ?>
+
+// Optional: Fetch all categories for the filter dropdown dynamically
+try {
+    $catStmt = $pdo->query("SELECT name FROM permits_categories ORDER BY name ASC");
+    $categories = $catStmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    $categories = [];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -51,28 +90,37 @@ try {
         </section>
 
         <!-- SEARCH + FILTER -->
-        <section class="filters">
-          <div class="search-box">
-            <span class="material-symbols-outlined">search</span>
-            <input
-              type="text"
-              placeholder="Search permits (e.g. Construction)"
-            />
-          </div>
+        <form method="GET" action="" class="filters">
+            <input type="hidden" name="page" value="permits">
+            <div class="search-box">
+              <span class="material-symbols-outlined">search</span>
+              <input
+                type="text"
+                name="q"
+                placeholder="Search permits (e.g. Construction)"
+                value="<?= isset($_GET['q']) ? htmlspecialchars($_GET['q']) : '' ?>"
+              />
+            </div>
 
-          <div class="select-box">
-            <span class="material-symbols-outlined">filter_list</span>
-            <select>
-              <option>All Categories</option>
-              <option>Building & Construction</option>
-              <option>Business & Trade</option>
-              <option>Events & Public Spaces</option>
-              <option>Infrastructure</option>
-            </select>
-          </div>
+            <div class="select-box">
+              <span class="material-symbols-outlined">filter_list</span>
+              <select name="category">
+                <option value="">All Categories</option>
+                <?php foreach ($categories as $cat): ?>
+                  <option 
+                    value="<?= htmlspecialchars($cat['name']) ?>" 
+                    <?= (isset($_GET['category']) && $_GET['category'] == $cat['name']) ? 'selected' : '' ?>
+                  >
+                    <?= htmlspecialchars($cat['name']) ?>
+                  </option>
+                <?php endforeach; ?>
+              </select>
+            </div>
 
-          <button class="search-btn">Find Permit</button>
-        </section>
+            <button type="submit" class="search-btn">Find Permit</button>
+
+                </form>
+
 
         <!-- PERMITS GRID -->
         <section class="permits-grid">
@@ -101,5 +149,12 @@ try {
         </section>
       </div>
     </main>
+    <script>
+// Remove query parameters from URL without reloading the page
+if (window.history.replaceState) {
+    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=permits';
+    window.history.replaceState(null, null, cleanUrl);
+}
+    </script>
   </body>
 </html>
