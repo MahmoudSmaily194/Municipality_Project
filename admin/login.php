@@ -87,7 +87,7 @@ include '/xampp/htdocs/Municipality/includes/toast.php';
             <div class="input-field">
                 <span class="material-symbols-outlined">lock</span>
                 <input
-                type="password"
+                type="text"
                 name="password"
                 placeholder="Password"
                 required
@@ -126,7 +126,7 @@ include '/xampp/htdocs/Municipality/includes/toast.php';
 
                 <div class="input-field">
                     <span class="material-symbols-outlined"> lock </span>
-                    <input type="password" name="password_hash" placeholder="Password" required />
+                    <input type="text" name="password_hash" placeholder="Password" required />
                 </div>
 
                 <div class="input-field">

@@ -84,27 +84,6 @@ try {
     ");
 
   // ---------------------
-  // X. Event Votes
-  // ---------------------
-  $pdo->exec("
-        CREATE TABLE IF NOT EXISTS event_votes (
-            id CHAR(36) PRIMARY KEY,
-            event_id CHAR(36) NOT NULL,
-            user_id CHAR(36) NOT NULL,
-            vote TINYINT(1) DEFAULT 1, -- always 1 (like/upvote)
-            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-
-            CONSTRAINT fk_votes_event
-                FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE,
-
-            CONSTRAINT fk_votes_user
-                FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-
-            CONSTRAINT unique_user_event_vote UNIQUE (event_id, user_id)
-        );
-    ");
-
-  // ---------------------
   // 5. News
   // ---------------------
   $pdo->exec("
